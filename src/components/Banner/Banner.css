@@ -1,0 +1,53 @@
+.banner {
+	height: 100vh;
+	background-color: #3447f6;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+}
+
+.banner_container {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	/* align-items: center; */
+}
+
+.banner__left {
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 40px;
+}
+
+.banner__left_numbers {
+	font-size: 24px;
+}
+.banner__left_title {
+	margin-top: 0;
+	padding-top: 0;
+	font-size: 64px;
+}
+
+.banner__left_bottom {
+}
+
+.banner__price_btn {
+}
+
+.banner__price {
+	font-size: 24px;
+}
+
+.banner__right {
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.banner_img {
+	width: 80%;
+}
