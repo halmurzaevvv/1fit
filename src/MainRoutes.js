@@ -2,9 +2,10 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
+import Companies from "./pages/Companies";
 import Home from "./pages/Home";
-// import AddProduct from "./components/Product/AddProduct";
-// import ProductList from "./components/Product/ProductList";
+import Partners from "./pages/Partners";
+import Studios from "./pages/Studios";
 
 const MainRoutes = () => {
   return (
@@ -12,8 +13,9 @@ const MainRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      {/* <Route path="/products" element={<ProductList />} /> */}
-      {/* <Route path="/admin" element={<AddProduct />} /> */}
+      <Route path="/studios" element={<Studios />} />
+      <Route path="/companies" element={<Companies />} />
+      <Route path="/partners" element={<Partners />} />
     </Routes>
   );
 };

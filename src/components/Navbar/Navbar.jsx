@@ -16,6 +16,7 @@ import { Navigate, useNavigate } from "react-router-dom"
 import { authContext } from "../Contexts/AuthContext"
 import { useState } from "react"
 import { useEffect } from "react"
+import LogoutIcon from "@mui/icons-material/Logout"
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"]
 
@@ -124,29 +125,81 @@ const Navbar = () => {
 					>
 						LOGO
 					</Typography>
-					<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+					<Box
+						sx={{
+							flexGrow: 1,
+							display: { xs: "none", md: "flex" },
+						}}
+					>
 						{user ? (
-							<>
-								<Button
-									onClick={() => navigate("/products")}
-									sx={{ my: 2, color: "black", display: "block" }}
+							<Box
+								sx={{
+									width: "100%",
+									flexGrow: 1,
+									display: "flex",
+									justifyContent: "space-between",
+								}}
+							>
+								<Box
+									sx={{
+										flexGrow: 1,
+										display: { xs: "none", md: "flex" },
+									}}
 								>
-									Products
-								</Button>
-								<Button
-									onClick={() => navigate("/admin")}
-									sx={{ my: 2, color: "black", display: "block" }}
+									<Button
+										onClick={() => navigate("/studios")}
+										sx={{ my: 2, color: "black", display: "block" }}
+									>
+										Залы и студии
+									</Button>
+									<Button
+										onClick={() => navigate("/")}
+										sx={{ my: 2, color: "black", display: "block" }}
+									>
+										Цены
+									</Button>
+									<Button
+										onClick={() => navigate("/companies")}
+										sx={{ my: 2, color: "black", display: "block" }}
+									>
+										Компаниям
+									</Button>
+									<Button
+										onClick={() => navigate("/partners")}
+										sx={{ my: 2, color: "black", display: "block" }}
+									>
+										Партнерам
+									</Button>
+								</Box>
+								<Box
+									sx={{
+										flexGrow: 1,
+										display: { xs: "none", md: "flex" },
+										justifyContent: "right",
+									}}
 								>
-									Admin Page
-								</Button>
-								<Typography>{user}</Typography>
-								<Button
-									onClick={() => logout()}
-									sx={{ my: 2, color: "black", display: "block" }}
-								>
-									Logout
-								</Button>
-							</>
+									<Button
+										onClick={() => navigate("/admin")}
+										sx={{ my: 2, color: "black", display: "block" }}
+									>
+										Admin Page
+									</Button>
+									<Typography sx={{ my: 3, color: "black", display: "block" }}>
+										{user}
+									</Typography>
+									<Button
+										onClick={() => logout()}
+										sx={{ my: 2, color: "black", display: "block" }}
+									>
+										<LogoutIcon
+											sx={{
+												color: "black",
+												display: "flex",
+											}}
+										/>
+									</Button>
+								</Box>
+							</Box>
 						) : (
 							<>
 								<Button
@@ -165,7 +218,7 @@ const Navbar = () => {
 						)}
 					</Box>
 
-					<Box sx={{ flexGrow: 0 }}>
+					{/* <Box sx={{ flexGrow: 0 }}>
 						<Tooltip title="Open settings">
 							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
 								<Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -193,7 +246,7 @@ const Navbar = () => {
 								</MenuItem>
 							))}
 						</Menu>
-					</Box>
+					</Box> */}
 				</Toolbar>
 			</Container>
 		</AppBar>
