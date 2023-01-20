@@ -1,6 +1,7 @@
 import React, { createContext, useReducer, useState } from 'react';
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { API_CATEGORY, API_PRODUCTS } from '../../helper';
+import axios from "axios";
 
 export const outContext = createContext();
 
@@ -11,14 +12,14 @@ const THEREIN_STATE = {
     categories: [],
 };
 
-function reducer (state = THEREIN_STATE, action) {
+function reducer(state = THEREIN_STATE, action) {
     switch (action.type) {
         case "GET_STUDIOS":
-            return {...state, haals:action.payload.results, pages: Math.ceil(action.payload.count / 9),};
-            case "GET_CATEGORIES":
-                return {...state, categories: action.payload};
-                default:
-                    return state;
+            return { ...state, haals: action.payload.results, pages: Math.ceil(action.payload.count / 9), };
+        case "GET_CATEGORIES":
+            return { ...state, categories: action.payload };
+        default:
+            return state;
     }
 }
 
@@ -30,7 +31,7 @@ const OutContext = ({ children }) => {
     const [erorr, setErorr] = useState([]);
 
     async function getStudios() {
-        try{
+        try {
             const token = JSON.parse(localStorage.getItem("token"));
             const Authorization = `Bearer ${token.access}`;
             const config = {
@@ -40,7 +41,7 @@ const OutContext = ({ children }) => {
             };
 
             const res = await axios(`${API_PRODUCTS}/${window.location.search}`, config);
-            
+
             dispatch({
                 type: "GET_STUDIOS",
                 payload: res.data,
@@ -51,7 +52,7 @@ const OutContext = ({ children }) => {
     }
 
     async function getCategories() {
-        try{
+        try {
             const token = JSON.parse(localStorage.getItem("token"));
             const Authorization = `Bearer ${token.access}`;
             const config = {
@@ -71,7 +72,7 @@ const OutContext = ({ children }) => {
     }
 
     async function addStudios(newStudio) {
-        try{
+        try {
             const token = JSON.parse(localStorage.getItem("token"));
             const Authorization = `Bearer ${token.access}`;
             const config = {
@@ -89,8 +90,8 @@ const OutContext = ({ children }) => {
         }
     }
 
-    async function deleteStudio() {
-        try{
+    async function deleteStudio(id) {
+        try {
             const token = JSON.parse(localStorage.getItem("token"));
             const Authorization = `Bearer ${token.access}`;
             const config = {
@@ -107,7 +108,7 @@ const OutContext = ({ children }) => {
     }
     return (
         <div>
-            
+
         </div>
     );
 };

@@ -20,8 +20,8 @@ const Tickets = () => {
 				flexDirection: "column",
 			}}
 		>
+			<span id="prices"></span>
 			<Box
-				id="prices"
 				sx={{
 					width: "100%",
 					textAlign: "center",
