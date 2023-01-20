@@ -15,10 +15,13 @@ const Banner = () => {
 						<div className="banner__left_bottom">
 							<Button
 								sx={{
-									height: "60px",
-									width: "250px",
+									height: "50px",
+									width: "220px",
 									borderRadius: "20px",
-									margin: "5px",
+									margin: "10px",
+									mb: 2,
+									color: "#3446f6",
+									backgroundColor: "#fff",
 								}}
 								className="banner__price_btn"
 								variant="contained"
