@@ -39,6 +39,10 @@ const Navbar = () => {
 		setAnchorElUser(null)
 	}
 
+	function goToPrices() {
+		navigate("/?q=#prices")
+	}
+
 	const { logout, user } = React.useContext(authContext)
 
 	const navigate = useNavigate()
@@ -71,7 +75,6 @@ const Navbar = () => {
 					>
 						LOGO
 					</Typography>
-
 					<Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
 						<IconButton
 							size="large"
@@ -153,8 +156,9 @@ const Navbar = () => {
 										Залы и студии
 									</Button>
 									<Button
-										onClick={() => navigate("/")}
-										sx={{ my: 2, color: "black", display: "block" }}
+										href="#prices"
+										onClick={goToPrices}
+										sx={{ my: 2, color: "black" }}
 									>
 										Цены
 									</Button>
@@ -217,7 +221,7 @@ const Navbar = () => {
 							</>
 						)}
 					</Box>
-
+					{/* function goToContacts() {navigate("/?q=#contacts")} */}
 					{/* <Box sx={{ flexGrow: 0 }}>
 						<Tooltip title="Open settings">
 							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

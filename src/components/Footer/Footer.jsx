@@ -1,6 +1,8 @@
 import { Box, Typography } from "@mui/material"
 import { Container } from "@mui/system"
 import React from "react"
+import InstagramIcon from "@mui/icons-material/Instagram"
+import TelegramIcon from "@mui/icons-material/Telegram"
 
 const Footer = () => {
 	return (
@@ -62,15 +64,29 @@ const Footer = () => {
 								width: "100px",
 								textAlign: "center",
 							}}
-							href="https://www.instagram.com/halmurzaevvv/"
+							href="#"
 						>
-							<img
-								style={{
-									width: "100px",
+							<InstagramIcon
+								sx={{
+									color: "#000",
+									scale: "3",
+									// width: "400px",
 								}}
-								className="footer-icon footers"
-								src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
-								alt="#"
+							/>
+						</a>
+						<a
+							style={{
+								width: "100px",
+								textAlign: "center",
+							}}
+							href="#"
+						>
+							<TelegramIcon
+								sx={{
+									color: "#000",
+									scale: "3",
+									// width: "400px",
+								}}
 							/>
 						</a>
 					</Box>

@@ -21,20 +21,18 @@ const Tickets = () => {
 			}}
 		>
 			<Box
+				id="prices"
 				sx={{
 					width: "100%",
 					textAlign: "center",
-
 					display: "flex",
-					// alignItems: "center",
 					justifyContent: "center",
 				}}
 			>
 				<Typography
 					sx={{
-						// width: "100%",
 						textAlign: "center",
-						mt: 15,
+						mt: 10,
 						fontWeight: "700",
 						color: "#fff",
 					}}
