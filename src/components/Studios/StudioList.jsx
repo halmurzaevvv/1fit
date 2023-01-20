@@ -1,36 +1,49 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { outContext } from '../Contexts/OutContext';
-import { Box } from '@mui/material'
+import { Box, Pagination } from "@mui/material";
+import React, { useContext, useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { productContext } from "../Contexts/OutContext";
+import StudioCard from "./StudioCard";
 
 const StudioList = () => {
-    const { getStudios, studios, pages } = useContext(outContext);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [searchParams, setSearchParams] = useSearchParams();
+  const { getProducts, products, pages } = useContext(productContext);
 
-    useEffect(() => {
-        getStudios();
-    }, []);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-    useEffect(() => {
-        getStudios();
-    }, [searchParams]);
+  useEffect(() => {
+    getProducts();
+  }, []);
 
-    useEffect(() => {
-        setSearchParams({
-            page: currentPage,
-        });
-    }, [currentPage]);
+  useEffect(() => {
+    getProducts();
+  }, [searchParams]);
 
-    console.log(studios);
+  useEffect(() => {
+    setSearchParams({
+      page: currentPage,
+    });
+  }, [currentPage]);
 
-    return (
-        <div>
-            <Box>
-                
-            </Box>
-        </div>
-    );
+  console.log(products);
+
+  return ( <div>
+    <Box>
+    ProductList
+    {products.map((item) => (
+      <StudioCard key={item.id} item={item} />
+    ))}
+    </Box>
+    <Box>
+      <Pagination
+      count={pages}
+      variant="outlined"
+      color="primary"
+      page={currentPage}
+      onChange={(e, p) => setCurrentPage(p)}
+      />
+    </Box>
+  </div>
+  );
 };
 
 export default StudioList;

@@ -45,7 +45,7 @@ const HomeCategories = () => {
 					Виды занятий
 				</Typography>
 				<Typography
-					onClick={() => navigate("/studios")}
+					onClick={() => navigate("/products")}
 					sx={{
 						width: "15%",
 						fontWeight: "700",
