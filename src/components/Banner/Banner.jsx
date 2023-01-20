@@ -4,8 +4,17 @@ import "./Banner.css"
 
 const Banner = () => {
 	return (
-		<section className="banner" id="home">
+		<section className="banner">
 			<div className="banner_container">
+				<span
+					style={{
+						position: "relative",
+						top: "-100px",
+					}}
+					id="home"
+				>
+					13
+				</span>
 				<div className="banner__left">
 					<div>
 						<h4 className="banner__left_numbers">0 · 0 · 12</h4>
