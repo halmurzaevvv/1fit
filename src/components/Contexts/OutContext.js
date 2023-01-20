@@ -5,7 +5,7 @@ import { API_CATEGORY, API_PRODUCTS } from '../../helper';
 export const outContext = createContext();
 
 const THEREIN_STATE = {
-    halls: [],
+    studios: [],
     pages: 0,
     oneContent: {},
     categories: [],
