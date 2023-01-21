@@ -11,15 +11,17 @@ const AuthContextProvider = ({ children }) => {
 
     const navigate = useNavigate();
 
-    const register = async (formData) => {
+    const register = async (formData, email) => {
         try {
             const res = await axios.post(`${API_AUTH}/register/`, formData);
             console.log(res);
+            alert(`На вашу почту отправленна ссылка с подтверждением.`);
             navigate("/login");
         } catch (e) {
-            setError(Object.values(e.response.data).flat(2)[0]);
-            console.log(error);
-            console.log(Object.values(e.response.data).flat(2)[0]);
+            console.log(e);
+            setError([e.response.data.detail]);
+            console.log([e.response.data]);
+            // console.log(error);
         }
     };
 
@@ -36,6 +38,8 @@ const AuthContextProvider = ({ children }) => {
         } catch (e) {
             console.log(e);
             setError([e.response.data.detail]);
+            console.log([e.response.data]);
+            // console.log(error);
         }
     };
 
@@ -57,6 +61,8 @@ const AuthContextProvider = ({ children }) => {
             setUser(userName);
         } catch (e) {
             console.log(e);
+            setError([e.response.data.detail]);
+
         }
     };
 
