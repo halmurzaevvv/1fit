@@ -44,6 +44,7 @@ export default function Login() {
 	const [password, setPassword] = React.useState("")
 
 	function handleSubmit() {
+		console.log(email, password)
 		if (!email.trim() || !password.trim()) {
 			alert("Заполните поля!")
 			return
