@@ -1,6 +1,6 @@
 import { Button, Tooltip, Typography } from "@mui/material"
 import { Box } from "@mui/system"
-import React from "react"
+import React, { useEffect } from "react"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 import ImageList from "@mui/material/ImageList"
 import ImageListItem from "@mui/material/ImageListItem"
@@ -9,12 +9,20 @@ import ListSubheader from "@mui/material/ListSubheader"
 import IconButton from "@mui/material/IconButton"
 import InfoIcon from "@mui/icons-material/Info"
 import { useNavigate } from "react-router-dom"
+import AOS from "aos"
+import "aos/dist/aos.css"
 
 const HomeCategories = () => {
+	useEffect(() => {
+		AOS.init()
+	}, [])
+
 	const navigate = useNavigate()
 
 	return (
 		<div
+			data-aos="fade-up"
+			data-aos-duration="800"
 			sx={{
 				height: "100vh",
 				width: "100%",

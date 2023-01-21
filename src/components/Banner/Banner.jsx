@@ -1,15 +1,37 @@
 import { Box, Button, Container } from "@mui/material"
-import React from "react"
+import React, { useEffect } from "react"
 import "./Banner.css"
+import AOS from "aos"
+import "aos/dist/aos.css"
 
 const Banner = () => {
+	useEffect(() => {
+		AOS.init()
+	}, [])
 	return (
-		<section className="banner" id="home">
+		<section className="banner">
 			<div className="banner_container">
+				<span
+					style={{
+						position: "relative",
+						top: "-5000px",
+					}}
+					id="home"
+				></span>
 				<div className="banner__left">
 					<div>
-						<h4 className="banner__left_numbers">0 · 0 · 12</h4>
-						<h1 className="banner__left_title">
+						<h4
+							className="banner__left_numbers"
+							data-aos="fade-up"
+							data-aos-duration="600"
+						>
+							0 · 0 · 12
+						</h4>
+						<h1
+							className="banner__left_title"
+							data-aos="fade-up"
+							data-aos-duration="800"
+						>
 							Ваш абонемент на все виды спорта
 						</h1>
 						<div className="banner__left_bottom">
