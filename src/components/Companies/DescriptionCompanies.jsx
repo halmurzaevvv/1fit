@@ -1,9 +1,19 @@
 import { Box, Card, CardContent, Container, Typography } from "@mui/material"
-import React from "react"
+import React, { useEffect } from "react"
+import AOS from "aos"
+import "aos/dist/aos.css"
+import { useNavigate } from "react-router-dom"
 
 const DescriptionCompanies = () => {
+	const navigate = useNavigate()
+	useEffect(() => {
+		AOS.init()
+	}, [])
+
 	return (
 		<Box
+			data-aos="fade-up"
+			data-aos-duration="800"
 			sx={{
 				width: "100%",
 				display: "flex",
@@ -35,6 +45,8 @@ const DescriptionCompanies = () => {
 					</Typography>
 				</Box>
 				<Box
+					data-aos="fade-up"
+					data-aos-duration="600"
 					sx={{
 						marginTop: "50px",
 						display: "flex",

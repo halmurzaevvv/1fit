@@ -1,9 +1,18 @@
 import { Box, Button, Typography } from "@mui/material"
-import React from "react"
+import React, { useEffect } from "react"
+import "aos/dist/aos.css"
+import AOS from "aos"
+import { useNavigate } from "react-router-dom"
 
 const BannerCompanies = () => {
+	const navigate = useNavigate()
+	useEffect(() => {
+		AOS.init()
+	}, [])
 	return (
 		<Box
+			data-aos="fade-up"
+			data-aos-duration="800"
 			sx={{
 				width: "100%",
 				height: "100vh",
@@ -13,7 +22,16 @@ const BannerCompanies = () => {
 				backgroundColor: "RGB(10, 18, 50)",
 			}}
 		>
+			<span
+				style={{
+					position: "relative",
+					top: "-100px",
+				}}
+				id="companies"
+			></span>
 			<Box
+				data-aos="fade-up"
+				data-aos-duration="600"
 				sx={{
 					mx: 6,
 					width: "50%",
@@ -24,6 +42,8 @@ const BannerCompanies = () => {
 				}}
 			>
 				<Typography
+					data-aos="fade-up"
+					data-aos-duration="800"
 					sx={{
 						color: "#fff",
 						fontWeight: "700",
@@ -34,6 +54,8 @@ const BannerCompanies = () => {
 					Корпоративный абонемент
 				</Typography>
 				<Typography
+					data-aos="fade-up"
+					data-aos-duration="900"
 					sx={{
 						my: 2,
 						width: "90%",
@@ -45,6 +67,8 @@ const BannerCompanies = () => {
 					1000+ залов в Алматы, Астане, Шымкенте и Караганде для ваших коллег
 				</Typography>
 				<Button
+					data-aos="fade-up"
+					data-aos-duration="1100"
 					sx={{
 						fontSize: "13px",
 						fontWeight: "700",

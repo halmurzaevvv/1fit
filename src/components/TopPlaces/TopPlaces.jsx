@@ -1,17 +1,21 @@
 import { Box, Button, Typography } from "@mui/material"
-import React from "react"
+import React, { useEffect } from "react"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 import { useNavigate } from "react-router-dom"
 import Card from "@mui/material/Card"
 import CardActions from "@mui/material/CardActions"
 import CardContent from "@mui/material/CardContent"
 import CardMedia from "@mui/material/CardMedia"
+import AOS from "aos"
+import "aos/dist/aos.css"
 
 const TopPlaces = () => {
 	const navigate = useNavigate()
-
+	useEffect(() => {
+		AOS.init()
+	}, [])
 	return (
-		<div>
+		<div data-aos="fade-up" data-aos-duration="800">
 			<Box
 				sx={{
 					width: "100%",
@@ -60,6 +64,8 @@ const TopPlaces = () => {
 				</Typography>
 			</Box>
 			<Box
+				data-aos="fade-up"
+				data-aos-duration="600"
 				sx={{
 					width: "100%",
 					display: "flex",

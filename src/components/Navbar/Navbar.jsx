@@ -17,6 +17,7 @@ import { authContext } from "../Contexts/AuthContext"
 import { useState } from "react"
 import { useEffect } from "react"
 import LogoutIcon from "@mui/icons-material/Logout"
+import AOS from "aos"
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"]
 
@@ -43,6 +44,10 @@ const Navbar = () => {
 
 	const navigate = useNavigate()
 
+	useEffect(() => {
+		AOS.init()
+	}, [])
+
 	return (
 		<AppBar
 			sx={{
@@ -51,7 +56,7 @@ const Navbar = () => {
 			}}
 			position="sticky"
 		>
-			<Container maxWidth="xl">
+			<Container maxWidth="xl" data-aos="fade-up" data-aos-duration="800">
 				<Toolbar disableGutters>
 					<AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
 					<div>
@@ -166,16 +171,20 @@ const Navbar = () => {
 										Цены
 									</Button>
 									<Button
+										href="#companies"
 										onClick={() => navigate("/companies")}
-										sx={{ my: 2, color: "black", display: "block" }}
+										sx={{ my: 2, pt: 1, color: "black", display: "block" }}
 									>
 										Компаниям
 									</Button>
 									<Button
-										onClick={() => navigate("/partners")}
-										sx={{ my: 2, color: "black", display: "block" }}
+										href="#contacts"
+										onClick={() => {
+											navigate("/?q=#contacts")
+										}}
+										sx={{ my: 2, pt: 1, color: "black", display: "block" }}
 									>
-										Партнерам
+										Контакты
 									</Button>
 								</Box>
 								<Box
