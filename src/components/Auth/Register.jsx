@@ -41,18 +41,30 @@ export default function Register() {
 
 	const [email, setEmail] = React.useState("")
 
+	const [firstName, setFirstName] = React.useState("")
+
+	const [lastName, setLastName] = React.useState("")
+
 	const [password, setPassword] = React.useState("")
 
 	const [confirmPassword, setConfirmPassword] = React.useState("")
 
 	function handleSubmit() {
-		if (!email.trim() || !password.trim() || !confirmPassword.trim()) {
+		if (
+			!email.trim() ||
+			!firstName.trim() ||
+			!lastName.trim() ||
+			!password.trim() ||
+			!confirmPassword.trim()
+		) {
 			alert("Заполните поля!")
 			return
 		}
 
 		let formData = new FormData()
 		formData.append("email", email)
+		formData.append("first_name", firstName)
+		formData.append("last_name", lastName)
 		formData.append("password", password)
 		formData.append("password_confirm", confirmPassword)
 		register(formData)
@@ -101,7 +113,7 @@ export default function Register() {
 						mr: 10,
 						my: 4,
 						backgroundColor: "white",
-						height: "520px",
+						height: "680px",
 						borderRadius: "20px",
 					}}
 				>
@@ -137,6 +149,30 @@ export default function Register() {
 								autoFocus
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
+							/>
+							<TextField
+								margin="normal"
+								required
+								fullWidth
+								id="first_name"
+								label="First Name"
+								name="first_name"
+								autoComplete="first_name"
+								autoFocus
+								value={firstName}
+								onChange={(e) => setFirstName(e.target.value)}
+							/>
+							<TextField
+								margin="normal"
+								required
+								fullWidth
+								id="last_name"
+								label="Last Name"
+								name="last_name"
+								autoComplete="last_name"
+								autoFocus
+								value={lastName}
+								onChange={(e) => setLastName(e.target.value)}
 							/>
 							<TextField
 								margin="normal"

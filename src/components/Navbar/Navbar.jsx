@@ -17,7 +17,6 @@ import { authContext } from "../Contexts/AuthContext"
 import { useState } from "react"
 import { useEffect } from "react"
 import LogoutIcon from "@mui/icons-material/Logout"
-import AOS from "aos"
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"]
 
@@ -44,10 +43,6 @@ const Navbar = () => {
 
 	const navigate = useNavigate()
 
-	useEffect(() => {
-		AOS.init()
-	}, [])
-
 	return (
 		<AppBar
 			sx={{
@@ -56,7 +51,7 @@ const Navbar = () => {
 			}}
 			position="sticky"
 		>
-			<Container maxWidth="xl" data-aos="fade-up" data-aos-duration="800">
+			<Container maxWidth="xl">
 				<Toolbar disableGutters>
 					<AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
 					<div>
