@@ -66,6 +66,33 @@ const AuthContextProvider = ({ children }) => {
         }
     };
 
+    const forgot_password = async (formData, forgot_password) => {
+        try {
+            const res = await axios.post(`${API_AUTH}/forgot_password/`, formData);
+            console.log(res);
+            alert(`Если существует учетная запись, привязанная к этому электронному адресу, то в ближайшее время на него будет отправлено сообщение с секретным кодом для сброса пароля.`);
+            navigate("/forgotPasswordComplete");
+        } catch (e) {
+            console.log(e);
+            setError([e.response.data.detail]);
+            console.log([e.response.data]);
+            // console.log(error);
+        }
+    };
+
+    const forgot_password_complete = async (formData) => {
+        try {
+            const res = await axios.post(`${API_AUTH}/forgot_password_complete/`, formData);
+            console.log(res);
+            navigate("/login");
+        } catch (e) {
+            console.log(e);
+            setError([e.response.data.detail]);
+            console.log([e.response.data]);
+            // console.log(error);
+        }
+    };
+
     function logout() {
         localStorage.removeItem("token");
         localStorage.removeItem("username");
@@ -83,6 +110,8 @@ const AuthContextProvider = ({ children }) => {
         user,
         error,
 
+        forgot_password,
+        forgot_password_complete,
         login,
         register,
         logout,
