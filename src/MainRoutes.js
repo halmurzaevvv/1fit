@@ -4,10 +4,12 @@ import ForgotPassword from "./components/Auth/ForgotPassword";
 import ForgotPasswordComplete from "./components/Auth/ForgotPasswordComplete";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
+import AddProduct from "./components/Studios/AddProduct";
+import StudioList from "./components/Studios/StudioList";
 import Companies from "./pages/Companies";
 import Home from "./pages/Home";
 import Partners from "./pages/Partners";
-import Studios from "./pages/Studios";
+
 
 const MainRoutes = () => {
   return (
@@ -15,11 +17,12 @@ const MainRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/studios" element={<Studios />} />
+      <Route path="/products" element={<StudioList />} />
       <Route path="/companies" element={<Companies />} />
       <Route path="/partners" element={<Partners />} />
       <Route path="/forgotPassword" element={<ForgotPassword />} />
       <Route path="/forgotPasswordComplete" element={<ForgotPasswordComplete />} />
+      <Route path="/admin" element={<AddProduct />} />
     </Routes>
   );
 };

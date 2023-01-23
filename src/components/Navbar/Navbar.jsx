@@ -153,7 +153,7 @@ const Navbar = () => {
 									}}
 								>
 									<Button
-										onClick={() => navigate("/studios")}
+										onClick={() => navigate("/products")}
 										sx={{ my: 2, color: "black", display: "block" }}
 									>
 										Залы и студии
