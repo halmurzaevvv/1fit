@@ -50,7 +50,7 @@ const AuthContextProvider = ({ children }) => {
         try {
             const Auth = `Bearer ${token.access}`;
 
-            let res = await axios.post(`${API_AUTH}/token/refresh/`, {
+            let res = await axios.post(`${API_AUTH}/refresh/`, {
                 refresh: token.refresh,
             });
 
@@ -72,9 +72,9 @@ const AuthContextProvider = ({ children }) => {
             const res = await axios.post(`${API_AUTH}/forgot_password/`, formData);
             console.log(res);
             alert(`Если существует учетная запись, привязанная к этому электронному адресу, то в ближайшее время на него будет отправлено сообщение с секретным кодом для сброса пароля.`);
-            <Alert severity="info">
-                Если существует учетная запись, привязанная к этому электронному адресу, то в ближайшее время на него будет отправлено сообщение с секретным кодом для сброса пароля.
-            </Alert>;
+            //  <Alert severity="info">
+            //     Если существует учетная запись, привязанная к этому электронному адресу, то в ближайшее время на него будет отправлено сообщение с секретным кодом для сброса пароля.
+            // </Alert>;
             navigate("/forgotPasswordComplete");
         } catch (e) {
             console.log(e);
@@ -119,6 +119,7 @@ const AuthContextProvider = ({ children }) => {
         login,
         register,
         logout,
+        setUser
     };
     return <authContext.Provider value={value}>{children}</authContext.Provider>;
 };

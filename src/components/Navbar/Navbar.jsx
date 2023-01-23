@@ -23,6 +23,15 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"]
 const Navbar = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null)
 	const [anchorElUser, setAnchorElUser] = React.useState(null)
+	const { setUser } = React.useContext(authContext)
+
+	useEffect(() => {
+		let user = localStorage.getItem("username")
+
+		if (user) {
+			setUser(user)
+		}
+	}, [])
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget)
