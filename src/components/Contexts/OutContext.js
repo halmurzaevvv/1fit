@@ -45,6 +45,8 @@ const OutContextProvider = ({ children }) => {
 
       const res = await axios(`${API_PRODUCTS}/${window.location.search}`, config);
 
+      navigate("/products");
+
       dispatch({
         type: "GET_PRODUCTS",
         payload: res.data,

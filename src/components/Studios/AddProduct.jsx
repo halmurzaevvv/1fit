@@ -12,16 +12,12 @@ import {
   Typography,
 } from "@mui/material";
 import { authContext } from "../Contexts/AuthContext";
-import { productContext } from "../Contexts/ProductContext";
+import { productContext } from "../Contexts/OutContext";
 
 const AddProduct = () => {
   const { user } = useContext(authContext);
-  const { addProducts, error, categories, getCategories } =
+  const { addProducts, error, categories } =
     useContext(productContext);
-
-  useEffect(() => {
-    getCategories();
-  }, []);
 
   const [product, setProduct] = useState({
     title: "",
@@ -58,7 +54,7 @@ const AddProduct = () => {
   return (
     <div>
       {" "}
-      {user === "admin@admin.com" ? (
+      {user === "mokiimake@gmail.com" ? (
         <Box
           sx={{
             width: "40vw",

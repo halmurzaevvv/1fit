@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
+import AddProduct from "./components/Studios/AddProduct";
 import StudioList from "./components/Studios/StudioList";
 import Companies from "./pages/Companies";
 import Home from "./pages/Home";
@@ -17,6 +18,7 @@ const MainRoutes = () => {
       <Route path="/products" element={<StudioList />} />
       <Route path="/companies" element={<Companies />} />
       <Route path="/partners" element={<Partners />} />
+      <Route path="/admin" element={<AddProduct />} />
     </Routes>
   );
 };
