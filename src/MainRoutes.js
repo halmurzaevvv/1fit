@@ -5,6 +5,7 @@ import ForgotPasswordComplete from "./components/Auth/ForgotPasswordComplete";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import AddProduct from "./components/Studios/AddProduct";
+import Edit from "./components/Studios/Edit";
 import StudioList from "./components/Studios/StudioList";
 import Companies from "./pages/Companies";
 import Home from "./pages/Home";
@@ -23,6 +24,7 @@ const MainRoutes = () => {
       <Route path="/forgotPassword" element={<ForgotPassword />} />
       <Route path="/forgotPasswordComplete" element={<ForgotPasswordComplete />} />
       <Route path="/admin" element={<AddProduct />} />
+      <Route path="/edit/:id" element={<Edit />} />
     </Routes>
   );
 };

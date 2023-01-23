@@ -146,7 +146,7 @@ const Navbar = () => {
 							display: { xs: "none", md: "flex" },
 						}}
 					>
-						{user ? (
+						{user === "mokiimake@gmail.com" || "oneapollo777@gmail.com" ? (
 							<Box
 								sx={{
 									width: "100%",
@@ -222,18 +222,75 @@ const Navbar = () => {
 							</Box>
 						) : (
 							<>
-								<Button
-									onClick={() => navigate("/login")}
-									sx={{ my: 2, color: "black", display: "block" }}
+							<Box
+								sx={{
+									width: "100%",
+									flexGrow: 1,
+									display: "flex",
+									justifyContent: "space-between",
+								}}
+							>
+								<Box
+									sx={{
+										flexGrow: 1,
+										display: { xs: "none", md: "flex" },
+									}}
 								>
-									Login
-								</Button>
-								<Button
-									onClick={() => navigate("/register")}
-									sx={{ my: 2, color: "black", display: "block" }}
+									<Button
+										onClick={() => navigate("/products")}
+										sx={{ my: 2, color: "black", display: "block" }}
+									>
+										Залы и студии
+									</Button>
+									<Button
+										href="#prices"
+										onClick={() => navigate("/?q=#prices")}
+										sx={{ my: 2, color: "black" }}
+									>
+										Цены
+									</Button>
+									<Button
+										href="#companies"
+										onClick={() => navigate("/companies")}
+										sx={{ my: 2, pt: 1, color: "black", display: "block" }}
+									>
+										Компаниям
+									</Button>
+									<Button
+										href="#contacts"
+										onClick={() => {
+											navigate("/?q=#contacts")
+										}}
+										sx={{ my: 2, pt: 1, color: "black", display: "block" }}
+									>
+										Контакты
+									</Button>
+								</Box>
+								<Box
+									sx={{
+										flexGrow: 1,
+										display: { xs: "none", md: "flex" },
+										justifyContent: "right",
+									}}
 								>
-									Register
-								</Button>
+									
+									<Typography sx={{ my: 3, color: "black", display: "block" }}>
+										{user}
+									</Typography>
+									<Button
+										onClick={() => logout()}
+										sx={{ my: 2, color: "black", display: "block" }}
+									>
+										<LogoutIcon
+											sx={{
+												color: "black",
+												display: "flex",
+											}}
+										/>
+									</Button>
+								</Box>
+							</Box>
+								
 							</>
 						)}
 					</Box>

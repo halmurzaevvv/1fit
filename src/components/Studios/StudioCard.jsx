@@ -7,8 +7,12 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { productContext } from "../Contexts/OutContext";
 import { Box, Grid, Paper, Item, styled } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+
+
 const StudioCard = ({ item }) => {
-    const { deleteProduct } = useContext(productContext);
+    const { deleteProduct, saveEditStudio } = useContext(productContext);
+	const navigate = useNavigate()
 
     const Item = styled(Paper)(({ theme }) => ({
       backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -81,9 +85,21 @@ const StudioCard = ({ item }) => {
 								variant="h6"
 								color="text.secondary"
 							>
-								ул. Муратбаева, 180, 9-й этаж
+								{item.address}
 							</Typography>
-              <Typography variant="h6">{item.description}</Typography>
+              <Typography
+			 sx={{
+				height: "100px",
+				fontSize: "18px",
+				whiteSpace: "nowrap" /* Запрещаем перенос строк */,
+				overflow:
+					"hidden" /* Обрезаем все, что не помещается в область */,
+				padding: "5px" /* Поля вокруг текста */,
+				textOverflow: "ellipsis" /* Добавляем многоточие */,
+			}} 
+			  variant="h6">{item.description}</Typography>
+			  <Button size="small" onClick={() => deleteProduct(item.id)}>Delete</Button>
+			  <Button size="small" onClick={() => navigate(`/edit/${item.id}`)}>Edit</Button>
 						</CardActions>
             </Item>
             </Grid>

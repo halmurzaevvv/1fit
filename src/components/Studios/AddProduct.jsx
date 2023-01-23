@@ -16,13 +16,14 @@ import { productContext } from "../Contexts/OutContext"
 
 const AddProduct = () => {
 	const { user } = useContext(authContext)
-	const { addProducts, error, categories } = useContext(productContext)
+	const { addProducts, error, getCategories } = useContext(productContext)
 
 	const [product, setProduct] = useState({
 		title: "",
 		description: "",
 		price: "",
 		category: "",
+		address: "",
 		image: "",
 	})
 
@@ -45,6 +46,7 @@ const AddProduct = () => {
 		newProduct.append("title", product.title)
 		newProduct.append("description", product.description)
 		newProduct.append("price", product.price)
+		newProduct.append("address", product.address)
 		newProduct.append("category", product.category)
 		newProduct.append("image", product.image)
 		addProducts(newProduct)
@@ -53,7 +55,7 @@ const AddProduct = () => {
 	return (
 		<div>
 			{" "}
-			{user === "mokiimake@gmail.com" || "oneapollo777@gmail.com" ? (
+			{user === "mokiimake@gmail.com" ? (
 				<Box
 					sx={{
 						width: "40vw",
@@ -97,23 +99,43 @@ const AddProduct = () => {
 						value={product.price}
 						onChange={handleInp}
 					/>
-					<FormControl fullWidth>
-						<InputLabel id="demo-simple-select-label">Category</InputLabel>
-						<Select
-							labelId="demo-simple-select-label"
-							id="demo-simple-select"
-							label="сфеупщкн"
-							onChange={handleInp}
-							value={product.category}
-							name="category"
-						>
-							{categories?.map((item) => (
-								<MenuItem value={item.id} key={item.id}>
-									{item.title}
-								</MenuItem>
-							))}
-						</Select>
-					</FormControl>
+					<TextField
+						sx={{ m: 1 }}
+						id="standard-basic"
+						label="address"
+						variant="outlined"
+						fullWidth
+						name="address"
+						value={product.address}
+						onChange={handleInp}
+					/>
+					<TextField
+						sx={{ m: 1 }}
+						id="standard-basic"
+						label="Category"
+						variant="outlined"
+						fullWidth
+						name="category"
+						value={product.category}
+						onChange={handleInp}
+					/>
+					{/* <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Category</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              label="сфеупщкн"
+              onChange={handleInp}
+              value={product.category}
+              name="category"
+            >
+              {categories?.map((item) => (
+                <MenuItem value={item.id} key={item.id}>
+                  {item.title}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl> */}
 
 					<input
 						type="file"
