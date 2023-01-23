@@ -11,6 +11,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles"
 import LockOpenIcon from "@mui/icons-material/LockOpen"
 import { Link as RouterLink } from "react-router-dom"
 import { authContext } from "../Contexts/AuthContext"
+import { Alert, AlertTitle } from "@mui/material"
 
 const theme = createTheme()
 
@@ -74,7 +75,7 @@ export default function ForgotPassword() {
 						mr: 10,
 						my: 4,
 						backgroundColor: "white",
-						height: "380px",
+						// height: "380px",
 						borderRadius: "20px",
 					}}
 				>
@@ -112,7 +113,6 @@ export default function ForgotPassword() {
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
 							/>
-
 							<Button
 								fullWidth
 								variant="contained"
@@ -125,12 +125,18 @@ export default function ForgotPassword() {
 							>
 								Восстановить пароль
 							</Button>
+							{/* <Alert severity="info">
+								Если существует учетная запись, привязанная к этому электронному
+								адресу, то в ближайшее время на него будет отправлено сообщение
+								с секретным кодом для сброса пароля.
+							</Alert> */}
 							<Grid container>
 								<Grid item>
 									<RouterLink to="/login">
 										<Typography
 											sx={{
-												mt: 2,
+												mt: 1,
+												mb: 3,
 												color: "#3446f6",
 											}}
 										>

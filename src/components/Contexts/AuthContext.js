@@ -1,3 +1,4 @@
+import { Alert } from "@mui/material";
 import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -71,6 +72,9 @@ const AuthContextProvider = ({ children }) => {
             const res = await axios.post(`${API_AUTH}/forgot_password/`, formData);
             console.log(res);
             alert(`Если существует учетная запись, привязанная к этому электронному адресу, то в ближайшее время на него будет отправлено сообщение с секретным кодом для сброса пароля.`);
+            <Alert severity="info">
+                Если существует учетная запись, привязанная к этому электронному адресу, то в ближайшее время на него будет отправлено сообщение с секретным кодом для сброса пароля.
+            </Alert>;
             navigate("/forgotPasswordComplete");
         } catch (e) {
             console.log(e);
