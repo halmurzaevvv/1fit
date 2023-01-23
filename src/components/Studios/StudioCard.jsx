@@ -8,6 +8,8 @@ import Typography from "@mui/material/Typography";
 import { productContext } from "../Contexts/OutContext";
 import { Box, Grid, Paper, Item, styled } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+
+
 const StudioCard = ({ item }) => {
     const { deleteProduct, saveEditStudio } = useContext(productContext);
 	const navigate = useNavigate()

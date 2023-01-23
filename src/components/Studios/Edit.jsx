@@ -5,19 +5,21 @@ import { productContext } from '../Contexts/OutContext';
 
 
 const Edit = () => {
-    const {saveEditStudio, getProducts, getCategories} = useContext(productContext)
+    const {saveEditStudio, oneProduct, getOneProduct } = useContext(productContext)
     const navigate = useNavigate()
     const params = useParams()
 
-    const [product, setProduct] = useState(getCategories)
+    const [product, setProduct] = useState(oneProduct)
 
     useEffect(() => {
-        getProducts(params.id)
+        getOneProduct(params.id)
     }, [])
 
-    useEffect(() => {
-        setProduct(getCategories)
-    }, [getCategories])
+
+
+		useEffect(() => {
+			setProduct(oneProduct)
+		}, [oneProduct])
 
     const handleInp = (e) => {
         if (e.target.name === "price") {
@@ -51,17 +53,17 @@ const Edit = () => {
 					variant="outlined"
 				/>
 				<TextField
-					value={product.img || ""}
+					value={product.address || ""}
 					onChange={handleInp}
-					name="img"
+					name="address"
 					id="outlined-basic"
-					label="Image"
+					label="Addres"
 					variant="outlined"
 				/>
 				<TextField
-					value={product.desc || ""}
+					value={product.description || ""}
 					onChange={handleInp}
-					name="desc"
+					name="description"
 					id="outlined-basic"
 					label="Description"
 					variant="outlined"
@@ -75,7 +77,7 @@ const Edit = () => {
 					variant="outlined"
 				/>
 				<TextField
-					value={product.type || ""}
+					value={product.category || ""}
 					onChange={handleInp}
 					name="type"
 					id="outlined-basic"

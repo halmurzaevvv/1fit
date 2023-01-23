@@ -49,7 +49,7 @@ const AuthContextProvider = ({ children }) => {
         try {
             const Auth = `Bearer ${token.access}`;
 
-            let res = await axios.post(`${API_AUTH}/token/refresh/`, {
+            let res = await axios.post(`${API_AUTH}/refresh/`, {
                 refresh: token.refresh,
             });
 
