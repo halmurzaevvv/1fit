@@ -38,7 +38,7 @@ const TopPlaces = () => {
 					Топовые места
 				</Typography>
 				<Typography
-					onClick={() => navigate("/studios")}
+					onClick={() => navigate("/products")}
 					sx={{
 						width: "15%",
 						fontWeight: "700",

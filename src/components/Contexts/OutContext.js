@@ -56,27 +56,27 @@ const OutContextProvider = ({ children }) => {
     }
   }
 
-  // async function getCategories() {
-  //   try {
-  //     const token = JSON.parse(localStorage.getItem("token"));
-  //     const Authorization = `Bearer ${token.access}`;
-  //     const config = {
-  //       headers: {
-  //         Authorization,
-  //       },
-  //     };
+  async function getCategories() {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const Authorization = `Bearer ${token.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
 
-  //     const res = await axios(`${API_CATEGORY}/list/`, config);
+      const res = await axios(`${API_CATEGORY}/list/`, config);
 
-  //     dispatch({
-  //       type: "GET_CATEGORIES",
-  //       payload: res.data.results,
-  //     });
-  //   } catch (e) {
-  //     console.log(e);
-  //     // setError(Object.values(e.response.data));
-  //   }
-  // }
+      dispatch({
+        type: "GET_CATEGORIES",
+        payload: res.data.results,
+      });
+    } catch (e) {
+      console.log(e);
+      // setError(Object.values(e.response.data));
+    }
+  }
 
   async function addProducts(newProd) {
     try {
@@ -132,6 +132,22 @@ const OutContextProvider = ({ children }) => {
       // setError(e.response.data);
     }
   }
+  async function saveEditStudio(id) {
+    try{
+      const token = JSON.parese(localStorage.getItem("token"))
+      const Authorization = `Bearer ${token.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      }
+
+      const res = await axios.patch(`${API_PRODUCTS}/${id}`, config)
+      getProducts();
+    } catch (e) {
+      console.log(e.response.data);
+    }
+  }
 
   let values = {
     products: state.products,
@@ -139,7 +155,8 @@ const OutContextProvider = ({ children }) => {
     categories: state.categories,
     error,
 
-    // getCategories,
+    getCategories,
+    saveEditStudio,
     addProducts,
     getProducts,
     toggleLike,
