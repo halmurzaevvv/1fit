@@ -21,6 +21,18 @@ import IconButton from "@mui/material/IconButton";
 import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
+import Map from "../Map/Map";
+
+// const { fetchByParams } = useContext(productContext);
+
+// const [page, setPage] = useState(1);
+// const count = Math.ceil(products.length / 3);
+
+// function currentData() {
+//   const begin = (page - 1) * 3;
+//   const end = begin + 3;
+//   return products.slice(begin, end);
+// }
 
 //!-------------------category
 const ITEM_HEIGHT = 48;
@@ -97,6 +109,16 @@ function getStyles(name, personName, theme) {
 const StudioList = () => {
   const theme = useTheme();
   const [personName, setPersonName] = React.useState([]);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [search, setSearch] = useState(searchParams.get("q") || "");
+
+  useEffect(() => {
+    setSearchParams({
+      q: search,
+    });
+    console.log(searchParams.toString());
+  }, [search]);
 
   const handleChange = (event) => {
     const {
@@ -332,14 +354,14 @@ const StudioList = () => {
         {/* //!================================Map start=================================== */}
         <Box
           sx={{
-            width: "40%",
+            width: "50%",
             backgroundColor: "lightcyan",
             position: "sticky",
             bottom: "100px",
             top: "200px",
           }}
         >
-          2
+          <Map />
         </Box>
         {/* //!================================Map end=================================== */}
       </Box>

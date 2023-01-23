@@ -2,6 +2,8 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
+import Map from "./components/Map/Map";
+import OrderForm from "./components/OrderForm/OrderForm";
 import Companies from "./pages/Companies";
 import Home from "./pages/Home";
 import Partners from "./pages/Partners";
@@ -16,6 +18,8 @@ const MainRoutes = () => {
       <Route path="/studios" element={<Studios />} />
       <Route path="/companies" element={<Companies />} />
       <Route path="/partners" element={<Partners />} />
+      <Route path="/order" element={<OrderForm />} />
+      {/* <Route path="/map" element={<Map />} /> */}
     </Routes>
   );
 };
