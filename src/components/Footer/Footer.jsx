@@ -113,6 +113,7 @@ const Footer = () => {
 						onetwothree@gmail.com
 					</Typography>
 					<Typography
+						id="contacts"
 						sx={{
 							textAlign: "center",
 							mt: 3,

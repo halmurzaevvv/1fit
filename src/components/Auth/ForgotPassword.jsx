@@ -3,58 +3,33 @@ import Avatar from "@mui/material/Avatar"
 import Button from "@mui/material/Button"
 import CssBaseline from "@mui/material/CssBaseline"
 import TextField from "@mui/material/TextField"
-import FormControlLabel from "@mui/material/FormControlLabel"
-import Checkbox from "@mui/material/Checkbox"
-import Link from "@mui/material/Link"
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
 import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
-
-import { Link as RouterLink, useNavigate } from "react-router-dom"
+import LockOpenIcon from "@mui/icons-material/LockOpen"
+import { Link as RouterLink } from "react-router-dom"
 import { authContext } from "../Contexts/AuthContext"
-
-function Copyright(props) {
-	return (
-		<Typography
-			variant="body2"
-			color="text.secondary"
-			align="center"
-			{...props}
-		>
-			{"Copyright © "}
-			<Link color="inherit" href="https://mui.com/">
-				Your Website
-			</Link>{" "}
-			{new Date().getFullYear()}
-			{"."}
-		</Typography>
-	)
-}
+import { Alert, AlertTitle } from "@mui/material"
 
 const theme = createTheme()
 
-export default function Login() {
-	const { login } = React.useContext(authContext)
+export default function ForgotPassword() {
+	const { forgot_password } = React.useContext(authContext)
 
 	const [email, setEmail] = React.useState("")
 
-	const [password, setPassword] = React.useState("")
-
-	const navigate = useNavigate()
-
 	function handleSubmit() {
-		if (!email.trim() || !password.trim()) {
+		console.log(email)
+		if (!email.trim()) {
 			alert("Заполните поля!")
 			return
 		}
 
 		let formData = new FormData()
 		formData.append("email", email)
-		formData.append("password", password)
-		login(formData, email)
+		forgot_password(formData, email)
 	}
 
 	return (
@@ -66,15 +41,9 @@ export default function Login() {
 				display: "flex",
 				alignItems: "center",
 				justifyContent: "center",
-				backgroundImage:
-					"url('https://1fit.app/static/visual-2df67c4b2230228adad561b651b8068e.png')",
-				backgroundRepeat: "no-repeat",
-				backgroundPosition: "0 50%",
-				backgroundAttachment: "fixed",
-				backgroundSize: "55%",
 			}}
 		>
-			{/* <Box
+			<Box
 				sx={{
 					width: "60%",
 					scale: "0.9",
@@ -87,11 +56,13 @@ export default function Login() {
 					mr: 0,
 					pr: 0,
 				}}
-			></Box> */}
+			></Box>
 
 			<ThemeProvider
 				theme={theme}
 				sx={{
+					ml: 0,
+					width: "40%",
 					display: "flex",
 					alignItems: "center",
 					justifyContent: "center",
@@ -101,11 +72,10 @@ export default function Login() {
 					component="main"
 					maxWidth="xs"
 					sx={{
-						width: "80%",
 						mr: 10,
 						my: 4,
 						backgroundColor: "white",
-						height: "450px",
+						// height: "380px",
 						borderRadius: "20px",
 					}}
 				>
@@ -125,17 +95,12 @@ export default function Login() {
 								backgroundColor: "#3446f6",
 							}}
 						>
-							<LockOutlinedIcon />
+							<LockOpenIcon />
 						</Avatar>
 						<Typography component="h1" variant="h5">
-							Sign in
+							Восстановить пароль
 						</Typography>
-						<Box
-							component="form"
-							// onSubmit={handleSubmit}
-							noValidate
-							sx={{ mt: 1 }}
-						>
+						<Box component="form" noValidate sx={{ mt: 1 }}>
 							<TextField
 								margin="normal"
 								required
@@ -148,20 +113,7 @@ export default function Login() {
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
 							/>
-							<TextField
-								margin="normal"
-								required
-								fullWidth
-								name="password"
-								label="Password"
-								type="password"
-								id="password"
-								autoComplete="current-password"
-								value={password}
-								onChange={(e) => setPassword(e.target.value)}
-							/>
 							<Button
-								//   type="submit"
 								fullWidth
 								variant="contained"
 								sx={{
@@ -171,29 +123,24 @@ export default function Login() {
 								}}
 								onClick={handleSubmit}
 							>
-								Log In
+								Восстановить пароль
 							</Button>
+							{/* <Alert severity="info">
+								Если существует учетная запись, привязанная к этому электронному
+								адресу, то в ближайшее время на него будет отправлено сообщение
+								с секретным кодом для сброса пароля.
+							</Alert> */}
 							<Grid container>
-								<Grid item xs>
-									<Link
-										onClick={() => navigate("/forgotPassword")}
-										// href="#"
-										variant="body2"
-										sx={{
-											color: "#3446f6",
-										}}
-									>
-										Забыли пароль?
-									</Link>
-								</Grid>
 								<Grid item>
-									<RouterLink to="/register">
+									<RouterLink to="/login">
 										<Typography
 											sx={{
+												mt: 1,
+												mb: 3,
 												color: "#3446f6",
 											}}
 										>
-											{"У вас еще нет учетной записи?"}
+											{"Вернуться ко входу в систему"}
 										</Typography>
 									</RouterLink>
 								</Grid>

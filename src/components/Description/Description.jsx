@@ -1,7 +1,13 @@
 import { Box, Card, CardContent, Container, Typography } from "@mui/material"
-import React from "react"
+import React, { useEffect } from "react"
+import AOS from "aos"
+import "aos/dist/aos.css"
 
 const Description = () => {
+	useEffect(() => {
+		AOS.init()
+	}, [])
+
 	return (
 		<div
 			sx={{
@@ -44,7 +50,10 @@ const Description = () => {
 					от йоги до кроссфита
 				</Typography>
 			</Box>
+
 			<Box
+				data-aos="fade-up"
+				data-aos-duration="800"
 				sx={{
 					display: "flex",
 					alignItems: "top",
