@@ -22,7 +22,7 @@ function reducer(state = INIT_STATE, action) {
       };
     case "GET_CATEGORIES":
       return { ...state, categories: action.payload };
-      case "GET_ONE_PRODUCT":
+    case "GET_ONE_PRODUCT":
       return { ...state, oneProduct: action.payload };
     default:
       return state;
@@ -59,7 +59,7 @@ const OutContextProvider = ({ children }) => {
     }
   }
 
-  async function getCategories() {
+  async function getCategories(title) {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
       const Authorization = `Bearer ${token.access}`;
@@ -69,18 +69,20 @@ const OutContextProvider = ({ children }) => {
         },
       };
 
-      const res = await axios(`${API_PRODUCTS}/category/`, config);
+      const res = await axios(`${API_PRODUCTS}/category/${title}/`, config);
 
       dispatch({
         type: "GET_CATEGORIES",
         payload: res.data.results,
       });
     } catch (e) {
-      console.log(e);
+      // console.log(Object.values(e.response.data).flat(5));
       // setError(Object.values(e.response.data));
+      setError([e.response.data.detail]);
+      console.log([e.response.data]);
+
     }
   }
-
   async function addProducts(newProd) {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
@@ -101,16 +103,16 @@ const OutContextProvider = ({ children }) => {
   }
 
   async function toggleLike(id) {
-    try{
-      const token = JSON.parse(localStorage.getItem("token"))
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
       const Authorization = `Bearer ${token.access}`;
-      const config ={
+      const config = {
         headers: {
           Authorization,
         }
-      }
+      };
 
-      const res = await axios(`${API_PRODUCTS}/${id}/toggle_like/`, config)
+      const res = await axios(`${API_PRODUCTS}/${id}/toggle_like/`, config);
       getProducts();
     } catch (e) {
       console.log(e.response.data);
@@ -119,16 +121,16 @@ const OutContextProvider = ({ children }) => {
   }
 
   async function deleteProduct(id) {
-    try{
-      const token = JSON.parse(localStorage.getItem("token"))
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
       const Authorization = `Bearer ${token.access}`;
-      const config ={
+      const config = {
         headers: {
           Authorization,
         }
-      }
+      };
 
-      const res = await axios.delete(`${API_PRODUCTS}/${id}/`, config)
+      const res = await axios.delete(`${API_PRODUCTS}/${id}/`, config);
       getProducts();
     } catch (e) {
       console.log(e.response.data);
@@ -136,16 +138,16 @@ const OutContextProvider = ({ children }) => {
     }
   }
   async function saveEditStudio(id) {
-    try{
-      const token = JSON.parse(localStorage.getItem("token"))
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
       const Authorization = `Bearer ${token.access}`;
-      const config ={
+      const config = {
         headers: {
           Authorization,
         }
-      }
+      };
 
-      const res = await axios.patch(`${API_PRODUCTS}/${id}/`, config)
+      const res = await axios.patch(`${API_PRODUCTS}/${id}/`, config);
       getProducts();
     } catch (e) {
       console.log(e.response.data);

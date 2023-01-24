@@ -12,6 +12,10 @@ import OrderForm from "./components/OrderForm/OrderForm";
 import Companies from "./pages/Companies";
 import Home from "./pages/Home";
 import Partners from "./pages/Partners";
+import Abonement365 from "./components/Abonements/Abonement365";
+import Abonement180 from "./components/Abonements/Abonement180";
+import Abonement90 from "./components/Abonements/Abonement90";
+import Abonement730 from "./components/Abonements/Abonement730";
 
 
 const MainRoutes = () => {
@@ -28,6 +32,10 @@ const MainRoutes = () => {
       <Route path="/admin" element={<AddProduct />} />
       <Route path="/edit/:id" element={<Edit />} />
       <Route path="/order" element={<OrderForm />} />
+      <Route path="/abonement365" element={<Abonement365 />} />
+      <Route path="/abonement90" element={<Abonement90 />} />
+      <Route path="/abonement180" element={<Abonement180 />} />
+      <Route path="/abonement730" element={<Abonement730 />} />
     </Routes>
   );
 };

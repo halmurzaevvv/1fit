@@ -16,7 +16,8 @@ import { productContext } from "../Contexts/OutContext"
 
 const AddProduct = () => {
 	const { user } = useContext(authContext)
-	const { addProducts, error, getCategories } = useContext(productContext)
+	const { addProducts, error, getCategories, categories } =
+		useContext(productContext)
 
 	const [product, setProduct] = useState({
 		title: "",
@@ -66,6 +67,23 @@ const AddProduct = () => {
 						alignItems: "center",
 					}}
 				>
+					<FormControl fullWidth>
+						<InputLabel id="demo-simple-select-label">Category</InputLabel>
+						<Select
+							labelId="demo-simple-select-label"
+							id="demo-simple-select"
+							label="category"
+							onChange={handleInp}
+							value={product.category}
+							name="category"
+						>
+							{categories?.map((item) => (
+								<MenuItem value={item.id} key={item.id}>
+									{item.title}
+								</MenuItem>
+							))}
+						</Select>
+					</FormControl>
 					<Typography variant="h6" sx={{ m: 2 }}>
 						Add new product
 					</Typography>

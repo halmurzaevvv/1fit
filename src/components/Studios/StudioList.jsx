@@ -443,10 +443,14 @@ const StudioList = () => {
 				<Box
 					sx={{
 						width: "50%",
+						height: "100%",
 						backgroundColor: "lightcyan",
-						position: "sticky",
-						bottom: "100px",
-						top: "200px",
+						// position: "sticky",
+						// display: "flex",
+						// justifyContent: "center",
+						// alignItems: "center",
+						// bottom: "100px",
+						// top: "200px",
 					}}
 				>
 					<Map />
