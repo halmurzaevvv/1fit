@@ -99,11 +99,14 @@ const MenuProps = {
 }
 
 const names = [
-	"Oliver Hansen",
-	"Van Henry",
-	"April Tucker",
-	"Ralph Hubbard",
-	"Omar Alexander",
+	"Dance",
+	"Gym",
+	"IntenseWorkout",
+	"MatrialArts",
+	"RecoveryProcedures",
+	"StrachingAndPilates",
+	"SwimmingPool",
+	"Yoga",
 ]
 
 const Search = styled("div")(({ theme }) => ({
