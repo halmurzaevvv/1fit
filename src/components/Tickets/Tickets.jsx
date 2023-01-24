@@ -8,11 +8,14 @@ import { maxHeight } from "@mui/system"
 import TelegramIcon from "@mui/icons-material/Telegram"
 import AOS from "aos"
 import "aos/dist/aos.css"
+import { useNavigate } from "react-router-dom"
 
 const Tickets = () => {
 	useEffect(() => {
 		AOS.init()
 	}, [])
+
+	const navigate = useNavigate()
 
 	return (
 		<Box
@@ -61,6 +64,7 @@ const Tickets = () => {
 				}}
 			>
 				<Card
+					onClick={() => navigate("/abonement365")}
 					sx={{
 						borderRadius: "20px",
 						m: 2,
@@ -131,6 +135,7 @@ const Tickets = () => {
 					</CardActionArea>
 				</Card>
 				<Card
+					onClick={() => navigate("/abonement90")}
 					sx={{
 						borderRadius: "20px",
 						m: 2,
@@ -156,7 +161,6 @@ const Tickets = () => {
 								scale: "0.6",
 							}}
 							component="img"
-							height="200"
 							image="https://1fit.app/static/90-ba2aa1bdc1719df1e52efef65ff8713d.svg"
 							// alt="green iguana"
 						/>
@@ -203,6 +207,7 @@ const Tickets = () => {
 					</CardActionArea>
 				</Card>
 				<Card
+					onClick={() => navigate("/abonement180")}
 					sx={{
 						borderRadius: "20px",
 						m: 2,
@@ -275,6 +280,7 @@ const Tickets = () => {
 					</CardActionArea>
 				</Card>
 				<Card
+					onClick={() => navigate("/abonement730")}
 					sx={{
 						borderRadius: "20px",
 						m: 2,
@@ -313,7 +319,7 @@ const Tickets = () => {
 								variant="h4"
 								component="div"
 							>
-								720 дней
+								730 дней
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
 								90 дней заморозки
