@@ -7,6 +7,8 @@ import Register from "./components/Auth/Register";
 import AddProduct from "./components/Studios/AddProduct";
 import Edit from "./components/Studios/Edit";
 import StudioList from "./components/Studios/StudioList";
+import Map from "./components/Map/Map";
+import OrderForm from "./components/OrderForm/OrderForm";
 import Companies from "./pages/Companies";
 import Home from "./pages/Home";
 import Partners from "./pages/Partners";
@@ -18,13 +20,14 @@ const MainRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/products" element={<StudioList />} />
+      <Route path="/studios" element={<StudioList />} />
       <Route path="/companies" element={<Companies />} />
       <Route path="/partners" element={<Partners />} />
       <Route path="/forgotPassword" element={<ForgotPassword />} />
       <Route path="/forgotPasswordComplete" element={<ForgotPasswordComplete />} />
       <Route path="/admin" element={<AddProduct />} />
       <Route path="/edit/:id" element={<Edit />} />
+      <Route path="/order" element={<OrderForm />} />
     </Routes>
   );
 };

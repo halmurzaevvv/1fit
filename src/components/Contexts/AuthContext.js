@@ -104,6 +104,14 @@ const AuthContextProvider = ({ children }) => {
         navigate("/login");
     }
 
+
+    function logout() {
+        localStorage.removeItem("token");
+        localStorage.removeItem("username");
+        setUser("");
+        navigate("/login");
+    }
+
     useEffect(() => {
         if (localStorage.getItem("token")) {
             checkAuth();
@@ -119,9 +127,8 @@ const AuthContextProvider = ({ children }) => {
         login,
         register,
         logout,
-        setUser
+        setUser,
     };
     return <authContext.Provider value={value}>{children}</authContext.Provider>;
 };
-
 export default AuthContextProvider;

@@ -140,7 +140,108 @@ const Navbar = () => {
 					>
 						LOGO
 					</Typography>
-					<Box
+
+					{/* Default------------------------------------- */}
+					{/* <Box
+						sx={{
+							flexGrow: 1,
+							display: { xs: "none", md: "flex" },
+						}}
+					>
+						{user ? (
+							<Box
+								sx={{
+									width: "100%",
+									flexGrow: 1,
+									display: "flex",
+									justifyContent: "space-between",
+								}}
+							>
+								<Box
+									sx={{
+										flexGrow: 1,
+										display: { xs: "none", md: "flex" },
+									}}
+								>
+									<Button
+										onClick={() => navigate("/studios")}
+										sx={{ my: 2, color: "black", display: "block" }}
+									>
+										Залы и студии
+									</Button>
+									<Button
+										href="#prices"
+										onClick={() => navigate("/?q=#prices")}
+										sx={{ my: 2, color: "black" }}
+									>
+										Цены
+									</Button>
+									<Button
+										href="#companies"
+										onClick={() => navigate("/companies")}
+										sx={{ my: 2, pt: 1, color: "black", display: "block" }}
+									>
+										Компаниям
+									</Button>
+									<Button
+										href="#contacts"
+										onClick={() => {
+											navigate("/?q=#contacts")
+										}}
+										sx={{ my: 2, pt: 1, color: "black", display: "block" }}
+									>
+										Контакты
+									</Button>
+								</Box>
+								<Box
+									sx={{
+										flexGrow: 1,
+										display: { xs: "none", md: "flex" },
+										justifyContent: "right",
+									}}
+								>
+									<Button
+										onClick={() => navigate("/admin")}
+										sx={{ my: 2, color: "black", display: "block" }}
+									>
+										Admin Page
+									</Button>
+									<Typography sx={{ my: 3, color: "black", display: "block" }}>
+										{user}
+									</Typography>
+									<Button
+										onClick={() => logout()}
+										sx={{ my: 2, color: "black", display: "block" }}
+									>
+										<LogoutIcon
+											sx={{
+												color: "black",
+												display: "flex",
+											}}
+										/>
+									</Button>
+								</Box>
+							</Box>
+						) : (
+							<>
+								<Button
+									onClick={() => navigate("/login")}
+									sx={{ my: 2, color: "black", display: "block" }}
+								>
+									Login
+								</Button>
+								<Button
+									onClick={() => navigate("/register")}
+									sx={{ my: 2, color: "black", display: "block" }}
+								>
+									Register
+								</Button>
+							</>
+						)}
+					</Box> */}
+
+					{/*  Малик--------------------------- */}
+					{/* <Box
 						sx={{
 							flexGrow: 1,
 							display: { xs: "none", md: "flex" },
@@ -222,6 +323,86 @@ const Navbar = () => {
 							</Box>
 						) : (
 							<>
+								<Box
+									sx={{
+										width: "100%",
+										flexGrow: 1,
+										display: "flex",
+										justifyContent: "space-between",
+									}}
+								>
+									<Box
+										sx={{
+											flexGrow: 1,
+											display: { xs: "none", md: "flex" },
+										}}
+									>
+										<Button
+											onClick={() => navigate("/products")}
+											sx={{ my: 2, color: "black", display: "block" }}
+										>
+											Залы и студии
+										</Button>
+										<Button
+											href="#prices"
+											onClick={() => navigate("/?q=#prices")}
+											sx={{ my: 2, color: "black" }}
+										>
+											Цены
+										</Button>
+										<Button
+											href="#companies"
+											onClick={() => navigate("/companies")}
+											sx={{ my: 2, pt: 1, color: "black", display: "block" }}
+										>
+											Компаниям
+										</Button>
+										<Button
+											href="#contacts"
+											onClick={() => {
+												navigate("/?q=#contacts")
+											}}
+											sx={{ my: 2, pt: 1, color: "black", display: "block" }}
+										>
+											Контакты
+										</Button>
+									</Box>
+									<Box
+										sx={{
+											flexGrow: 1,
+											display: { xs: "none", md: "flex" },
+											justifyContent: "right",
+										}}
+									>
+										<Typography
+											sx={{ my: 3, color: "black", display: "block" }}
+										>
+											{user}
+										</Typography>
+										<Button
+											onClick={() => logout()}
+											sx={{ my: 2, color: "black", display: "block" }}
+										>
+											<LogoutIcon
+												sx={{
+													color: "black",
+													display: "flex",
+												}}
+											/>
+										</Button>
+									</Box>
+								</Box>
+							</>
+						)}
+					</Box> */}
+
+					<Box
+						sx={{
+							flexGrow: 1,
+							display: { xs: "none", md: "flex" },
+						}}
+					>
+						{user ? (
 							<Box
 								sx={{
 									width: "100%",
@@ -237,7 +418,7 @@ const Navbar = () => {
 									}}
 								>
 									<Button
-										onClick={() => navigate("/products")}
+										onClick={() => navigate("/studios")}
 										sx={{ my: 2, color: "black", display: "block" }}
 									>
 										Залы и студии
@@ -273,7 +454,12 @@ const Navbar = () => {
 										justifyContent: "right",
 									}}
 								>
-									
+									{/* <Button
+										onClick={() => navigate("/admin")}
+										sx={{ my: 2, color: "black", display: "block" }}
+									>
+										Admin Page
+									</Button> */}
 									<Typography sx={{ my: 3, color: "black", display: "block" }}>
 										{user}
 									</Typography>
@@ -290,10 +476,24 @@ const Navbar = () => {
 									</Button>
 								</Box>
 							</Box>
-								
+						) : (
+							<>
+								<Button
+									onClick={() => navigate("/login")}
+									sx={{ my: 2, color: "black", display: "block" }}
+								>
+									Login
+								</Button>
+								<Button
+									onClick={() => navigate("/register")}
+									sx={{ my: 2, color: "black", display: "block" }}
+								>
+									Register
+								</Button>
 							</>
 						)}
 					</Box>
+
 					{/* function goToContacts() {navigate("/?q=#contacts")} */}
 					{/* <Box sx={{ flexGrow: 0 }}>
 						<Tooltip title="Open settings">

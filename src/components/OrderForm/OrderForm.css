@@ -1,0 +1,95 @@
+.conteiner {
+  margin-top: 2vh;
+  padding-top: 6vh;
+  padding-bottom: 5vh;
+  border-radius: 50px;
+  border: solid #3447f6 4px;
+  background-color: #3447f6;
+}
+form {
+  margin: 30px auto 0;
+  max-width: 400px;
+  align-items: center;
+}
+.front {
+  position: relative;
+  transform: rotateY(0deg);
+  background-color: red;
+}
+.back {
+  position: relative;
+  transform: rotateY(180deg);
+  background-color: yellow;
+}
+.rccs__card {
+  height: 182.873px;
+  margin-top: 10;
+  margin-bottom: 10;
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: all 0.4s linear;
+  transition: all 0.4s linear;
+  width: 290px;
+
+  /* background: linear-gradient(
+   25deg
+, #986, #234); */
+}
+
+.front1 {
+  display: flex;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: red;
+}
+
+.back1 {
+  transform: rotateY(360deg);
+  margin-bottom: 30px !important;
+  background-color: yellow;
+}
+.App-cards-list {
+  display: flex;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.App-cards-list > * {
+  transform: scale(0.8);
+  margin-bottom: 30px !important;
+}
+
+.back3 {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-image: url(https://avatars.mds.yandex.net/get-kinopoisk-post-img/1374145/245e9eaedc3ce28a4be97be3a36e05e9/960x540);
+}
+/* rccs-signature-background: repeating-linear-gradient(
+  0.1deg,
+  #fff 20%,
+  #fff 40%,
+  #fea 40%,
+  #fea 44%,
+  #fff 44%
+);
+rccs-default-background: linear-gradient(25deg, #d32121, #178a63);
+rccs-unknown-background: linear-gradient(25deg, rgb(160, 18, 101), #999);
+rccs-background-transition: 0.5s;
+rccs-animate-background: true; */
+
+.rccs__card--unknown > div {
+  background-image: url(https://avatars.mds.yandex.net/get-kinopoisk-post-img/1374145/245e9eaedc3ce28a4be97be3a36e05e9/960x540);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+}
+
+.btn {
+  max-width: 370px !important;
+  border-radius: 30px;
+}
