@@ -1,61 +1,13 @@
-// import { Box, Pagination } from "@mui/material";
-// import React, { useContext, useEffect, useState } from "react";
-// import { useSearchParams } from "react-router-dom";
-// import { productContext } from "../Contexts/OutContext";
-// import StudioCard from "./StudioCard";
-
-// const StudioList = () => {
-// const { getProducts, products, pages } = useContext(productContext);
-
-// const [currentPage, setCurrentPage] = useState(1);
-// const [searchParams, setSearchParams] = useSearchParams();
-
-// useEffect(() => {
-//   getProducts();
-// }, []);
-
-// useEffect(() => {
-//   getProducts();
-// }, [searchParams]);
-
-// useEffect(() => {
-//   setSearchParams({
-//     page: currentPage,
-//   });
-// }, [currentPage]);
-
-// console.log(products);
-
-//   return ( <div>
-// <Box>
-// ProductList
-// {products.map((item) => (
-//   <StudioCard key={item.id} item={item} />
-// ))}
-// </Box>
-// <Box>
-//   <Pagination
-//   count={pages}
-//   variant="outlined"
-//   color="primary"
-//   page={currentPage}
-//   onChange={(e, p) => setCurrentPage(p)}
-//   />
-// </Box>
-// </div>
-//   );
-// };
-
-// export default StudioList;
 import React, { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-// import { outContext } from "../Contexts/OutContext"
 import {
   Box,
   CardActions,
   CardContent,
   CardMedia,
   Container,
+  InputAdornment,
+  TextField,
   Typography,
 } from "@mui/material";
 import { alpha, styled, useTheme } from "@mui/material/styles";
@@ -64,27 +16,12 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import InputBase from "@mui/material/InputBase";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import Map from "../Map/Map";
-import { Pagination } from "@mui/material";
+import { Pagination, InputBase } from "@mui/material";
 import { productContext } from "../Contexts/OutContext";
 import StudioCard from "./StudioCard";
-
-// const { fetchByParams } = useContext(productContext);
-
-// const [page, setPage] = useState(1);
-// const count = Math.ceil(products.length / 3);
-
-// function currentData() {
-//   const begin = (page - 1) * 3;
-//   const end = begin + 3;
-//   return products.slice(begin, end);
-// }
 
 //!-------------------category
 const ITEM_HEIGHT = 48;
@@ -356,70 +293,33 @@ const StudioList = () => {
         }}
       >
         {/* --------------------StudioCart------------------------- */}
-        {/* <Box
-					sx={{
-						// alignItems: "center",
-						width: "60%",
-						display: "flex",
-						justifyContent: "space-evenly",
-						flexWrap: "wrap",
-					}}
-				>
-					<Box
-						sx={{
-							width: "320px",
-							pt: 10,
-							// pr: 2,
-							// pb: 8,
-							display: "inline-block",
-						}}
-					>
-						<CardMedia
-							sx={{
-								height: "210px",
-								borderRadius: "20px",
-							}}
-							component="img"
-							alt="green iguana"
-							height="140"
-							image="https://onefit-static.s3.amazonaws.com/media/fitness/None/fu2d5dcdhxv85jdiundoqfxpg.jpg"
-						/>
-						<CardContent
-							sx={{
-								mb: 0,
-								pb: 0,
-							}}
-						>
-							<Typography
-								sx={{
-									fontWeight: "700",
-								}}
-								gutterBottom
-								variant="h5"
-								component="div"
-							>
-								First Fitness
-							</Typography>
-						</CardContent>
-						<CardActions>
-							<Typography variant="h6">⭐4.9</Typography>
-							<Typography
-								sx={{
-									fontSize: "18px",
-									whiteSpace: "nowrap"  Запрещаем перенос строк ,
-									overflow:
-										"hidden" Обрезаем все, что не помещается в область ,
-									padding: "5px"  Поля вокруг текста ,
-									textOverflow: "ellipsis"  Добавляем многоточие ,
-								}}
-								variant="h6"
-								color="text.secondary"
-							>
-								ул. Муратбаева, 180, 9-й этаж
-							</Typography>
-						</CardActions>
-					</Box>
-				</Box> */}
+        <Box
+          sx={{
+            width: "60%",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            {products.map((item) => (
+              <StudioCard key={item.id} item={item} />
+            ))}
+          </Box>
+          <Box>
+            <Pagination
+              count={pages}
+              variant="outlined"
+              color="primary"
+              page={currentPage}
+              onChange={(e, p) => setCurrentPage(p)}
+            />
+          </Box>
+        </Box>
 
         <Box>
           ProductList
@@ -438,21 +338,14 @@ const StudioList = () => {
         </Box>
 
         {/* --------------------StudioCart end------------------------- */}
-
         {/* //!================================Map start=================================== */}
         <Box
           sx={{
-            width: "60%",
-            height: "480px",
-            // display: "flex",
-            // backgroundColor: "white",
+            width: "40%",
+            // height: "100vh",
             position: "sticky",
-            // display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexWrap: "wrap",
-            bottom: "20px",
-            // top: "200px",
+            bottom: "0px",
+            right: "0px",
           }}
         >
           <Map />
@@ -464,5 +357,3 @@ const StudioList = () => {
 };
 
 export default StudioList;
-
-// Funky Dance Center - это не просто танцевальный центр, это одно из тех немногих мест, где раскрывают таланты. И занимаются здесь раскрытием Ваших тала...

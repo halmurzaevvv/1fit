@@ -70,9 +70,17 @@ const TopPlaces = () => {
 					width: "100%",
 					display: "flex",
 					justifyContent: "space-between",
+					flexWrap: "wrap",
 				}}
 			>
-				<Box sx={{ width: "400px", pr: 2, pb: 8, display: "inline-block" }}>
+				<Box
+					sx={{
+						width: "400px",
+						pr: 2,
+						pb: 8,
+						display: "inline-block",
+					}}
+				>
 					<CardMedia
 						sx={{
 							height: "250px",

@@ -129,7 +129,7 @@ const Tickets = () => {
 								}}
 								variant="contained"
 							>
-								Подробнее в <TelegramIcon sx={{ display: "flex", ml: 1 }} />
+								Приобрести
 							</Button>
 						</CardContent>
 					</CardActionArea>
@@ -201,7 +201,7 @@ const Tickets = () => {
 								}}
 								variant="contained"
 							>
-								Подробнее в <TelegramIcon sx={{ display: "flex", ml: 1 }} />
+								Приобрести
 							</Button>
 						</CardContent>
 					</CardActionArea>
@@ -274,7 +274,7 @@ const Tickets = () => {
 								}}
 								variant="contained"
 							>
-								Подробнее в <TelegramIcon sx={{ display: "flex", ml: 1 }} />
+								Приобрести
 							</Button>
 						</CardContent>
 					</CardActionArea>
@@ -347,7 +347,7 @@ const Tickets = () => {
 								}}
 								variant="contained"
 							>
-								Подробнее в <TelegramIcon sx={{ display: "flex", ml: 1 }} />
+								Приобрести
 							</Button>
 						</CardContent>
 					</CardActionArea>

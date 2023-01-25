@@ -1,10 +1,13 @@
-import { Box, Typography } from "@mui/material"
+import { Box, Button, Typography } from "@mui/material"
 import { Container } from "@mui/system"
 import React from "react"
 import InstagramIcon from "@mui/icons-material/Instagram"
 import TelegramIcon from "@mui/icons-material/Telegram"
+import ReviewsIcon from "@mui/icons-material/Reviews"
+import { useNavigate } from "react-router-dom"
 
 const Footer = () => {
+	const navigate = useNavigate()
 	return (
 		<Box
 			sx={{
@@ -89,6 +92,21 @@ const Footer = () => {
 								}}
 							/>
 						</a>
+						<Button
+							onClick={() => navigate("/reviews")}
+							sx={{
+								width: "100px",
+								textAlign: "center",
+							}}
+						>
+							<ReviewsIcon
+								sx={{
+									color: "#000",
+									scale: "3",
+									// width: "400px",
+								}}
+							/>
+						</Button>
 					</Box>
 					<Typography
 						sx={{

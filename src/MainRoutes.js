@@ -16,6 +16,8 @@ import Abonement365 from "./components/Abonements/Abonement365";
 import Abonement180 from "./components/Abonements/Abonement180";
 import Abonement90 from "./components/Abonements/Abonement90";
 import Abonement730 from "./components/Abonements/Abonement730";
+import Reviews from "./components/Reviews/Reviews";
+import ReviewsList from "./components/Reviews/ReviewsList";
 
 
 const MainRoutes = () => {
@@ -36,6 +38,8 @@ const MainRoutes = () => {
       <Route path="/abonement90" element={<Abonement90 />} />
       <Route path="/abonement180" element={<Abonement180 />} />
       <Route path="/abonement730" element={<Abonement730 />} />
+      <Route path="/reviews" element={<Reviews />} />
+      <Route path="/reviewsList" element={<ReviewsList />} />
     </Routes>
   );
 };

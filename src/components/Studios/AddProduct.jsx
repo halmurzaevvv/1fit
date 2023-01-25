@@ -19,7 +19,13 @@ const AddProduct = () => {
 	const { addProducts, error, getCategories, categories } =
 		useContext(productContext)
 
+	useEffect(() => {
+		getCategories()
+		console.log()
+	}, [])
+
 	const [product, setProduct] = useState({
+		trainer: "",
 		title: "",
 		description: "",
 		price: "",
@@ -44,6 +50,7 @@ const AddProduct = () => {
 
 	function handleSave() {
 		let newProduct = new FormData()
+		newProduct.append("trainer", product.trainer)
 		newProduct.append("title", product.title)
 		newProduct.append("description", product.description)
 		newProduct.append("price", product.price)
@@ -56,7 +63,7 @@ const AddProduct = () => {
 	return (
 		<div>
 			{" "}
-			{user === "mokiimake@gmail.com" ? (
+			{user === "mokiimake@gmail.com" || "ilhamhalmurzaev@gmail.com" ? (
 				<Box
 					sx={{
 						width: "40vw",
@@ -67,7 +74,7 @@ const AddProduct = () => {
 						alignItems: "center",
 					}}
 				>
-					<FormControl fullWidth>
+					{/* <FormControl fullWidth>
 						<InputLabel id="demo-simple-select-label">Category</InputLabel>
 						<Select
 							labelId="demo-simple-select-label"
@@ -83,10 +90,20 @@ const AddProduct = () => {
 								</MenuItem>
 							))}
 						</Select>
-					</FormControl>
+					</FormControl> */}
 					<Typography variant="h6" sx={{ m: 2 }}>
 						Add new product
 					</Typography>
+					<TextField
+						sx={{ m: 1 }}
+						id="standard-basic"
+						label="Trainer"
+						variant="outlined"
+						fullWidth
+						name="trainer"
+						value={product.trainer}
+						onChange={handleInp}
+					/>
 					<TextField
 						sx={{ m: 1 }}
 						id="standard-basic"
@@ -127,7 +144,7 @@ const AddProduct = () => {
 						value={product.address}
 						onChange={handleInp}
 					/>
-					<TextField
+					{/* <TextField
 						sx={{ m: 1 }}
 						id="standard-basic"
 						label="Category"
@@ -136,24 +153,25 @@ const AddProduct = () => {
 						name="category"
 						value={product.category}
 						onChange={handleInp}
-					/>
-					{/* <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Category</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              label="сфеупщкн"
-              onChange={handleInp}
-              value={product.category}
-              name="category"
-            >
-              {categories?.map((item) => (
-                <MenuItem value={item.id} key={item.id}>
-                  {item.title}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl> */}
+					/> */}
+
+					<FormControl fullWidth>
+						<InputLabel id="demo-simple-select-label">Category</InputLabel>
+						<Select
+							labelId="demo-simple-select-label"
+							id="demo-simple-select"
+							label="Category"
+							onChange={handleInp}
+							value={product.category}
+							name="category"
+						>
+							{categories?.map((item) => (
+								<MenuItem value={item.id} key={item.id}>
+									{item.title}
+								</MenuItem>
+							))}
+						</Select>
+					</FormControl>
 
 					<input
 						type="file"
