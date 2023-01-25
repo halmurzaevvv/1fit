@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { createContext, useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { API_CATEGORY, API_PRODUCTS } from "../../helper";
+import { API_CATEGORY, API_FAVORITES, API_FEEDBACK, API_PRODUCTS, API_REVIEWS } from "../../helper";
 
 export const productContext = createContext();
 
@@ -10,6 +10,7 @@ const INIT_STATE = {
   pages: 0,
   oneProduct: {},
   categories: [],
+  reviews: []
 };
 
 function reducer(state = INIT_STATE, action) {
@@ -24,6 +25,12 @@ function reducer(state = INIT_STATE, action) {
       return { ...state, categories: action.payload };
     case "GET_ONE_PRODUCT":
       return { ...state, oneProduct: action.payload };
+    case "GET_REVIEWS":
+      return {
+        ...state,
+        reviews: action.payload.results,
+        pages: Math.ceil(action.payload.count / 5),
+      };
     default:
       return state;
   }
@@ -46,6 +53,8 @@ const OutContextProvider = ({ children }) => {
       };
 
       const res = await axios(`${API_PRODUCTS}/${window.location.search}`, config);
+      console.log(res);
+
 
       // navigate("/products")
       ;
@@ -69,7 +78,7 @@ const OutContextProvider = ({ children }) => {
         },
       };
 
-      const res = await axios(`${API_PRODUCTS}/category/${title}/`, config);
+      const res = await axios(`${API_PRODUCTS}/category/`, config);
 
       dispatch({
         type: "GET_CATEGORIES",
@@ -95,7 +104,7 @@ const OutContextProvider = ({ children }) => {
 
       const res = await axios.post(`${API_PRODUCTS}/`, newProd, config);
       console.log(res.data);
-      navigate("/products");
+      navigate("/studios");
     } catch (e) {
       console.log(Object.values(e.response.data).flat(5));
       setError(Object.values(e.response.data));
@@ -112,7 +121,9 @@ const OutContextProvider = ({ children }) => {
         }
       };
 
-      const res = await axios(`${API_PRODUCTS}/${id}/toggle_like/`, config);
+
+
+      const res = await axios(`${API_PRODUCTS}/${id}/get_likes/`, config);
       getProducts();
     } catch (e) {
       console.log(e.response.data);
@@ -137,7 +148,7 @@ const OutContextProvider = ({ children }) => {
       // setError(e.response.data);
     }
   }
-  async function saveEditStudio(id) {
+  async function saveEditStudio(newProd, id) {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
       const Authorization = `Bearer ${token.access}`;
@@ -147,12 +158,61 @@ const OutContextProvider = ({ children }) => {
         }
       };
 
-      const res = await axios.patch(`${API_PRODUCTS}/${id}/`, config);
+
+      const res = await axios.patch(`${API_PRODUCTS}/${id}/`, newProd, config);
       getProducts();
     } catch (e) {
       console.log(e.response.data);
     }
   }
+
+  // const saveEditProduct = async (newProduct, id) => {
+  //   await axios.patch(`${API}/${id}`, newProduct);
+  //   getProducts();
+  // };
+  async function getReviews() {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const Authorization = `Bearer ${token.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+
+      const res = await axios(`${API_FEEDBACK}/review/`, config);
+      console.log(res);
+
+
+
+      dispatch({
+        type: "GET_REVIEWS",
+        payload: res.data,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async function addReview(newReview) {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const Authorization = `Bearer ${token.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+
+      const res = await axios.post(`${API_FEEDBACK}/review/`, newReview, config);
+      console.log(res.data);
+      // navigate("/studios");
+    } catch (e) {
+      console.log([e.response.data]);
+      setError([e.response.data]);
+    }
+  }
+
 
   async function getOneProduct(id) {
     try {
@@ -180,6 +240,7 @@ const OutContextProvider = ({ children }) => {
 
   let values = {
     products: state.products,
+    reviews: state.reviews,
     pages: state.pages,
     categories: state.categories,
     oneProduct: state.oneProduct,
@@ -191,7 +252,9 @@ const OutContextProvider = ({ children }) => {
     addProducts,
     getProducts,
     toggleLike,
-    deleteProduct
+    deleteProduct,
+    getReviews,
+    addReview,
   };
   return (
     <productContext.Provider value={values}>{children}</productContext.Provider>
