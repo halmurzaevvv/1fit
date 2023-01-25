@@ -16,6 +16,7 @@ import Abonement365 from "./components/Abonements/Abonement365";
 import Abonement180 from "./components/Abonements/Abonement180";
 import Abonement90 from "./components/Abonements/Abonement90";
 import Abonement730 from "./components/Abonements/Abonement730";
+import Favorites from "./components/Favorites/Favorites";
 
 
 const MainRoutes = () => {
@@ -36,6 +37,7 @@ const MainRoutes = () => {
       <Route path="/abonement90" element={<Abonement90 />} />
       <Route path="/abonement180" element={<Abonement180 />} />
       <Route path="/abonement730" element={<Abonement730 />} />
+      <Route path="/favorite" element={<Favorites />} />
     </Routes>
   );
 };

@@ -6,11 +6,14 @@ import CardMedia from "@mui/material/CardMedia"
 import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
 import { productContext } from "../Contexts/OutContext"
-import { Box, Grid, Paper, Item, styled } from "@mui/material"
+import { Box, Grid, Paper, Item, styled, IconButton } from "@mui/material"
 import { useNavigate } from "react-router-dom"
+import { cartContext } from "../Contexts/CartContext"
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 
 const StudioCard = ({ item }) => {
 	const { deleteProduct, saveEditStudio } = useContext(productContext)
+	const { addStudioToFav, checkProductInFavorite } = useContext(cartContext)
 	const navigate = useNavigate()
 
 	const Item = styled(Paper)(({ theme }) => ({
@@ -106,6 +109,17 @@ const StudioCard = ({ item }) => {
 							<Button size="small" onClick={() => navigate(`/edit/${item.id}`)}>
 								Edit
 							</Button>
+							<CardActions className="cart-action2">
+								<IconButton
+								variant="outlined"
+								size="small"
+								onClick={() => addStudioToFav(item)}
+								>
+									<BookmarkBorderIcon
+									className="card-btn"
+									color={checkProductInFavorite(item.id) ? "primary" : ""} />
+								</IconButton>
+							</CardActions>
 						</Box>
 					</CardActions>
 				</Box>

@@ -97,7 +97,7 @@ const OutContextProvider = ({ children }) => {
       console.log(res.data);
       navigate("/products");
     } catch (e) {
-      console.log(Object.values(e.response.data).flat(5));
+      console.log(e.response.data);
       setError(Object.values(e.response.data));
     }
   }

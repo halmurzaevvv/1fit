@@ -5,6 +5,7 @@ import App from './App';
 import AuthContextProvider from './components/Contexts/AuthContext';
 import { BrowserRouter } from 'react-router-dom';
 import OutContextProvider from './components/Contexts/OutContext';
+import CartContextProvider from './components/Contexts/CartContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,7 +13,9 @@ root.render(
     <BrowserRouter>
       <OutContextProvider>
       <AuthContextProvider>
+        <CartContextProvider>
         <App />
+        </CartContextProvider>
       </AuthContextProvider>
       </OutContextProvider>
     </BrowserRouter>
