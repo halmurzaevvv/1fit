@@ -63,7 +63,7 @@ const AddProduct = () => {
 	return (
 		<div>
 			{" "}
-			{user === "mokiimake@gmail.com" || "ilhamhalmurzaev@gmail.com" ? (
+			{user ? (
 				<Box
 					sx={{
 						width: "40vw",
@@ -144,18 +144,18 @@ const AddProduct = () => {
 						value={product.address}
 						onChange={handleInp}
 					/>
-					{/* <TextField
+
+					<TextField
 						sx={{ m: 1 }}
 						id="standard-basic"
-						label="Category"
+						label="category"
 						variant="outlined"
 						fullWidth
 						name="category"
 						value={product.category}
 						onChange={handleInp}
-					/> */}
-
-					<FormControl fullWidth>
+					/>
+					{/* <FormControl fullWidth>
 						<InputLabel id="demo-simple-select-label">Category</InputLabel>
 						<Select
 							labelId="demo-simple-select-label"
@@ -171,7 +171,7 @@ const AddProduct = () => {
 								</MenuItem>
 							))}
 						</Select>
-					</FormControl>
+					</FormControl> */}
 
 					<input
 						type="file"

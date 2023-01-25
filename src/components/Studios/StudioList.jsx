@@ -59,9 +59,17 @@ const StudioList = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
 	const [search, setSearch] = useState(searchParams.get("q") || "")
 
-	const { getProducts, products, pages } = useContext(productContext)
+	const { getProducts, products } = useContext(productContext)
 
 	const [currentPage, setCurrentPage] = useState(1)
+
+	const pages = Math.ceil(products.length / 5)
+
+	function currentData() {
+		let begin = (currentPage - 1) * 5
+		let end = begin + 5
+		return products.slice(begin, end)
+	}
 
 	useEffect(() => {
 		getProducts()
@@ -237,7 +245,7 @@ const StudioList = () => {
 							flexWrap: "wrap",
 						}}
 					>
-						{products.map((item) => (
+						{currentData().map((item) => (
 							<StudioCard key={item.id} item={item} />
 						))}
 					</Box>

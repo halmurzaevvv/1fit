@@ -27,7 +27,7 @@ const Reviews = ({ item }) => {
 
 	useEffect(() => {
 		getReviews()
-		console.log()
+		console.log(reviews)
 	}, [])
 
 	const [review, setReview] = useState({

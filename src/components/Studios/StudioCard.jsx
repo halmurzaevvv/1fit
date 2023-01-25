@@ -121,19 +121,19 @@ const StudioCard = ({ item }) => {
 								</Box>
 							</Box>
 
-							{item.trainer === user ? (
-								<Box>
-									<Button size="small" onClick={() => deleteProduct(item.id)}>
-										Delete
-									</Button>
-									<Button
-										size="small"
-										onClick={() => navigate(`/edit/${item.id}`)}
-									>
-										Edit
-									</Button>
-								</Box>
-							) : null}
+							{/* {item.trainer === user.email ? ( */}
+							<Box>
+								<Button size="small" onClick={() => deleteProduct(item.id)}>
+									Delete
+								</Button>
+								<Button
+									size="small"
+									onClick={() => navigate(`/edit/${item.id}`)}
+								>
+									Edit
+								</Button>
+							</Box>
+							{/* ) : null} */}
 						</CardContent>
 					</Card>
 				</Card>

@@ -28,7 +28,7 @@ function reducer(state = INIT_STATE, action) {
     case "GET_REVIEWS":
       return {
         ...state,
-        reviews: action.payload.results,
+        reviews: action.payload,
         pages: Math.ceil(action.payload.count / 5),
       };
     default:
@@ -82,8 +82,10 @@ const OutContextProvider = ({ children }) => {
 
       dispatch({
         type: "GET_CATEGORIES",
-        payload: res.data.results,
+        payload: res.data,
       });
+      console.log(res);
+
     } catch (e) {
       // console.log(Object.values(e.response.data).flat(5));
       // setError(Object.values(e.response.data));
@@ -91,7 +93,7 @@ const OutContextProvider = ({ children }) => {
       console.log([e.response.data]);
 
     }
-  }
+  };
   async function addProducts(newProd) {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
@@ -123,7 +125,7 @@ const OutContextProvider = ({ children }) => {
 
 
 
-      const res = await axios(`${API_PRODUCTS}/${id}/get_likes/`, config);
+      const res = await axios(`${API_PRODUCTS}/${id}/get_like/`, config);
       getProducts();
     } catch (e) {
       console.log(e.response.data);
