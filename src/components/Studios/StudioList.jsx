@@ -341,11 +341,12 @@ const StudioList = () => {
         {/* //!================================Map start=================================== */}
         <Box
           sx={{
-            width: "40%",
+            width: "90%",
             // height: "100vh",
             position: "sticky",
             bottom: "0px",
-            right: "0px",
+            right: "50px",
+            bottom: "25px",
           }}
         >
           <Map />

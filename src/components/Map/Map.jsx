@@ -1,26 +1,14 @@
 import { MapContainer } from "react-leaflet/MapContainer";
 import { TileLayer } from "react-leaflet/TileLayer";
-import { useMap } from "react-leaflet/hooks";
+import { useMapEvents } from "react-leaflet/hooks";
 import "./Map.css";
-import { LayersControl, Marker, Popup, ZoomControl } from "react-leaflet";
+import { LayersControl, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
 import React from "react";
 import { Box } from "@mui/material";
 
 const Map = () => {
   const position = [42.871413, 74.587144];
-
-  // {
-  //    AudioProcessingEvent.map((item) => (
-  //   <Pointer position={item.coordinates>
-  //     <Popup>
-  //       {item.title}
-  //       <Link to={`{API_PRODUCTS/details/${item.id}`}>
-  //       ПОДРОБНЕЕ
-  //       </Link>
-  //     </Popup>
-  //   }
-  //    ))
-  //   }
 
   return (
     <div>
@@ -58,7 +46,58 @@ const Map = () => {
           </div>
           <Marker position={position}>
             <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
+              ProFitnessAMG <br />
+              Фитнес-клуб ProFitnessAMG это современный, комфортный тренажерный
+              зал с новейшим профессиональным оборудованием последнего
+            </Popup>
+          </Marker>
+          <Marker position={[42.875036, 74.600455]}>
+            <Popup>
+              Mind Of Body <br /> Фитнес клуб Mind Of Body на Наурызбай батыра -
+              атмосферный фитнес-центр для тех, кто готов стать лучшей версией
+              себя. Клуб расположен в центре города,
+            </Popup>
+          </Marker>
+          <Marker position={[42.87859, 74.571112]}>
+            <Popup>
+              Urban Gym <br /> Urban Gym – современный тренажерный зал площадью
+              1400 кв.м, оснащен большим выбором тренажеров от мировых фирм
+              производителей. В зале работает
+            </Popup>
+          </Marker>
+          <Marker position={[42.861603, 74.586975]}>
+            <Popup>
+              Endurance Almaty <br /> Фитнес клуб Endurance Almaty - зал
+              площадью 2400 кв. м., рабочая площадь зала 1500 кв. метров. Фишка
+              клуба - авторская программа Endurance, направленная на
+            </Popup>
+          </Marker>
+          <Marker position={[42.865167, 74.55504]}>
+            <Popup>
+              Sport Complex Qazaqstan <br /> Sport Complex Qazaqstan - комплекс
+              с историей более 35 лет, сегодня это полноценный фитнес клуб
+              семейного типа с бассейном, сауной, тренажерным залом, и
+            </Popup>
+          </Marker>
+          <Marker position={[42.886545, 74.626597]}>
+            <Popup>
+              Pyramid Center Бассейн <br /> Бассейн Pyramid Pool в Аксае длиной
+              25 и шириной 7 метров, температура воды 28 градусов, подогреваемый
+              и нескользящий пол. В бассейне имеется сауна хамам,
+            </Popup>
+          </Marker>
+          <Marker position={[42.843756, 74.568031]}>
+            <Popup>
+              SK FITNESS <br /> Спортивный комплекс SK FITNESS - это бассейн с
+              многоступенчатой системой очистки, теплой водой, удобными
+              раздевалками и чистыми душевыми.
+            </Popup>
+          </Marker>
+          <Marker position={[42.846446, 74.634835]}>
+            <Popup>
+              In Clover YDF <br /> Студия In CLOVER на Курмангазы -
+              многофункциональный центр развития личности, тела и души. In
+              Clover YDF предлагает для вас широкий выбор
             </Popup>
           </Marker>
         </MapContainer>
