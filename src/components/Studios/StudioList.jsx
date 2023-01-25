@@ -1,12 +1,20 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom"
+<<<<<<< HEAD
 import { outContext } from "../Contexts/OutContext"
+=======
+>>>>>>> 36d76f331f12f5417038792fde5a20754fd29346
 import {
 	Box,
 	CardActions,
 	CardContent,
 	CardMedia,
 	Container,
+<<<<<<< HEAD
+=======
+	InputAdornment,
+	TextField,
+>>>>>>> 36d76f331f12f5417038792fde5a20754fd29346
 	Typography,
 } from "@mui/material"
 import { alpha, styled, useTheme } from "@mui/material/styles"
@@ -15,12 +23,21 @@ import InputLabel from "@mui/material/InputLabel"
 import MenuItem from "@mui/material/MenuItem"
 import FormControl from "@mui/material/FormControl"
 import Select from "@mui/material/Select"
+<<<<<<< HEAD
 import AppBar from "@mui/material/AppBar"
 import Toolbar from "@mui/material/Toolbar"
 import IconButton from "@mui/material/IconButton"
 import InputBase from "@mui/material/InputBase"
 import MenuIcon from "@mui/icons-material/Menu"
 import SearchIcon from "@mui/icons-material/Search"
+=======
+import Toolbar from "@mui/material/Toolbar"
+import SearchIcon from "@mui/icons-material/Search"
+import Map from "../Map/Map"
+import { Pagination } from "@mui/material"
+import { productContext } from "../Contexts/OutContext"
+import StudioCard from "./StudioCard"
+>>>>>>> 36d76f331f12f5417038792fde5a20754fd29346
 
 //!-------------------category
 const ITEM_HEIGHT = 48
@@ -35,6 +52,7 @@ const MenuProps = {
 }
 
 const names = [
+<<<<<<< HEAD
 	"Oliver Hansen",
 	"Van Henry",
 	"April Tucker",
@@ -85,6 +103,18 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 	},
 }))
 
+=======
+	"Dance",
+	"Gym",
+	"IntenseWorkout",
+	"MatrialArts",
+	"RecoveryProcedures",
+	"StrachingAndPilates",
+	"SwimmingPool",
+	"Yoga",
+]
+
+>>>>>>> 36d76f331f12f5417038792fde5a20754fd29346
 function getStyles(name, personName, theme) {
 	return {
 		fontWeight:
@@ -97,6 +127,7 @@ function getStyles(name, personName, theme) {
 const StudioList = () => {
 	const theme = useTheme()
 	const [personName, setPersonName] = React.useState([])
+<<<<<<< HEAD
 
 	const handleChange = (event) => {
 		const {
@@ -111,23 +142,54 @@ const StudioList = () => {
 	// const { getStudios, studios, pages } = useContext(outContext)
 	// const [currentPage, setCurrentPage] = useState(1)
 	// const [searchParams, setSearchParams] = useSearchParams()
+=======
+>>>>>>> 36d76f331f12f5417038792fde5a20754fd29346
 
-	// useEffect(() => {
-	// 	getStudios()
-	// }, [])
+	const [searchParams, setSearchParams] = useSearchParams()
+	const [search, setSearch] = useState(searchParams.get("q") || "")
 
-	// useEffect(() => {
-	// 	getStudios()
-	// }, [searchParams])
+	const { getProducts, products } = useContext(productContext)
 
-	// useEffect(() => {
-	// 	setSearchParams({
-	// 		page: currentPage,
-	// 	})
-	// }, [currentPage])
+	const [currentPage, setCurrentPage] = useState(1)
 
-	// console.log(studios)
+	const pages = Math.ceil(products.length / 5)
 
+<<<<<<< HEAD
+=======
+	function currentData() {
+		let begin = (currentPage - 1) * 5
+		let end = begin + 5
+		return products.slice(begin, end)
+	}
+
+	useEffect(() => {
+		getProducts()
+	}, [])
+
+	useEffect(() => {
+		setSearchParams({
+			q: search,
+		})
+		console.log(searchParams.toString())
+	}, [search])
+
+	useEffect(() => {
+		getProducts()
+	}, [searchParams])
+
+	// console.log(products)
+
+	const handleChange = (event) => {
+		const {
+			target: { value },
+		} = event
+		setPersonName(
+			// On autofill we get a stringified value.
+			typeof value === "string" ? value.split(",") : value
+		)
+	}
+
+>>>>>>> 36d76f331f12f5417038792fde5a20754fd29346
 	return (
 		<Box
 			sx={{
@@ -135,7 +197,11 @@ const StudioList = () => {
 				width: "100%",
 				display: "flex",
 				// alignItems: "center",
+<<<<<<< HEAD
 				// justifyContent: "center",
+=======
+				justifyContent: "right",
+>>>>>>> 36d76f331f12f5417038792fde5a20754fd29346
 			}}
 		>
 			<Box
@@ -204,6 +270,7 @@ const StudioList = () => {
 								width: "20%",
 							}}
 						>
+<<<<<<< HEAD
 							<Search
 								sx={{
 									border: "1px solid grey",
@@ -218,6 +285,22 @@ const StudioList = () => {
 									inputProps={{ "aria-label": "search" }}
 								/>
 							</Search>
+=======
+							<TextField
+								id="input-with-icon-textfield"
+								label="Search..."
+								value={search}
+								onChange={(e) => setSearch(e.target.value)}
+								InputProps={{
+									startAdornment: (
+										<InputAdornment position="start">
+											<SearchIcon />
+										</InputAdornment>
+									),
+								}}
+								variant="standard"
+							/>
+>>>>>>> 36d76f331f12f5417038792fde5a20754fd29346
 						</Box>
 						<FormControl sx={{ m: 1, width: 250 }}>
 							<InputLabel sx={{ mt: -1 }} id="demo-multiple-name-label">
@@ -256,7 +339,11 @@ const StudioList = () => {
 					mt: 10,
 					width: "100%",
 					display: "flex",
+<<<<<<< HEAD
 					justifyContent: "center",
+=======
+					justifyContent: "left",
+>>>>>>> 36d76f331f12f5417038792fde5a20754fd29346
 					alignItems: "center",
 					zIndex: 2,
 				}}
@@ -264,15 +351,20 @@ const StudioList = () => {
 				{/* --------------------StudioCart------------------------- */}
 				<Box
 					sx={{
+<<<<<<< HEAD
 						// alignItems: "center",
 						width: "60%",
 						display: "flex",
 						justifyContent: "space-evenly",
 						flexWrap: "wrap",
+=======
+						width: "60%",
+>>>>>>> 36d76f331f12f5417038792fde5a20754fd29346
 					}}
 				>
 					<Box
 						sx={{
+<<<<<<< HEAD
 							width: "320px",
 							pt: 10,
 							// pr: 2,
@@ -324,10 +416,31 @@ const StudioList = () => {
 								ул. Муратбаева, 180, 9-й этаж
 							</Typography>
 						</CardActions>
+=======
+							display: "flex",
+							justifyContent: "space-between",
+							alignItems: "center",
+							flexWrap: "wrap",
+						}}
+					>
+						{currentData().map((item) => (
+							<StudioCard key={item.id} item={item} />
+						))}
+					</Box>
+					<Box>
+						<Pagination
+							count={pages}
+							variant="outlined"
+							color="primary"
+							page={currentPage}
+							onChange={(e, p) => setCurrentPage(p)}
+						/>
+>>>>>>> 36d76f331f12f5417038792fde5a20754fd29346
 					</Box>
 				</Box>
 
 				{/* --------------------StudioCart end------------------------- */}
+<<<<<<< HEAD
 
 				{/* //!================================Map start=================================== */}
 				<Box
@@ -340,6 +453,19 @@ const StudioList = () => {
 					}}
 				>
 					2
+=======
+				{/* //!================================Map start=================================== */}
+				<Box
+					sx={{
+						width: "50%",
+						// height: "100vh",
+						position: "sticky",
+						bottom: "0px",
+						right: "0px",
+					}}
+				>
+					<Map />
+>>>>>>> 36d76f331f12f5417038792fde5a20754fd29346
 				</Box>
 				{/* //!================================Map end=================================== */}
 			</Box>

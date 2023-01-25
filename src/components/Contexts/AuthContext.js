@@ -1,3 +1,4 @@
+import { Alert } from "@mui/material";
 import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -15,11 +16,13 @@ const AuthContextProvider = ({ children }) => {
         try {
             const res = await axios.post(`${API_AUTH}/register/`, formData);
             console.log(res);
+            alert(`На вашу почту отправленна ссылка с подтверждением.`);
             navigate("/login");
         } catch (e) {
-            setError(Object.values(e.response.data).flat(2)[0]);
-            console.log(error);
-            console.log(Object.values(e.response.data).flat(2)[0]);
+            console.log(e);
+            setError([e.response.data.detail]);
+            console.log([e.response.data]);
+            // console.log(error);
         }
     };
 
@@ -36,6 +39,8 @@ const AuthContextProvider = ({ children }) => {
         } catch (e) {
             console.log(e);
             setError([e.response.data.detail]);
+            console.log([e.response.data]);
+            // console.log(error);
         }
     };
 
@@ -45,7 +50,7 @@ const AuthContextProvider = ({ children }) => {
         try {
             const Auth = `Bearer ${token.access}`;
 
-            let res = await axios.post(`${API_AUTH}/token/refresh/`, {
+            let res = await axios.post(`${API_AUTH}/refresh/`, {
                 refresh: token.refresh,
             });
 
@@ -57,8 +62,48 @@ const AuthContextProvider = ({ children }) => {
             setUser(userName);
         } catch (e) {
             console.log(e);
+            setError([e.response.data.detail]);
+
         }
     };
+
+    const forgot_password = async (formData, forgot_password) => {
+        try {
+            const res = await axios.post(`${API_AUTH}/forgot_password/`, formData);
+            console.log(res);
+            alert(`Если существует учетная запись, привязанная к этому электронному адресу, то в ближайшее время на него будет отправлено сообщение с секретным кодом для сброса пароля.`);
+            //  <Alert severity="info">
+            //     Если существует учетная запись, привязанная к этому электронному адресу, то в ближайшее время на него будет отправлено сообщение с секретным кодом для сброса пароля.
+            // </Alert>;
+            navigate("/forgotPasswordComplete");
+        } catch (e) {
+            console.log(e);
+            setError([e.response.data.detail]);
+            console.log([e.response.data]);
+            // console.log(error);
+        }
+    };
+
+    const forgot_password_complete = async (formData) => {
+        try {
+            const res = await axios.post(`${API_AUTH}/forgot_password_complete/`, formData);
+            console.log(res);
+            navigate("/login");
+        } catch (e) {
+            console.log(e);
+            setError([e.response.data.detail]);
+            console.log([e.response.data]);
+            // console.log(error);
+        }
+    };
+
+    function logout() {
+        localStorage.removeItem("token");
+        localStorage.removeItem("username");
+        setUser("");
+        navigate("/login");
+    }
+
 
     function logout() {
         localStorage.removeItem("token");
@@ -77,11 +122,13 @@ const AuthContextProvider = ({ children }) => {
         user,
         error,
 
+        forgot_password,
+        forgot_password_complete,
         login,
         register,
         logout,
+        setUser,
     };
     return <authContext.Provider value={value}>{children}</authContext.Provider>;
 };
-
 export default AuthContextProvider;

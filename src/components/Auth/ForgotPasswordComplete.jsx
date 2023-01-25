@@ -12,48 +12,30 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
 import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
+import PasswordIcon from "@mui/icons-material/Password"
 
-import { Link as RouterLink } from "react-router-dom"
+import { Link as RouterLink, useNavigate } from "react-router-dom"
 import { authContext } from "../Contexts/AuthContext"
-
-function Copyright(props) {
-	return (
-		<Typography
-			variant="body2"
-			color="text.secondary"
-			align="center"
-			{...props}
-		>
-			{"Copyright © "}
-			<Link color="inherit" href="https://mui.com/">
-				Your Website
-			</Link>{" "}
-			{new Date().getFullYear()}
-			{"."}
-		</Typography>
-	)
-}
 
 const theme = createTheme()
 
-export default function Register() {
-	const { register } = React.useContext(authContext)
+export default function ForgotPasswordComplete() {
+	const { forgot_password_complete } = React.useContext(authContext)
 
 	const [email, setEmail] = React.useState("")
 
-	const [firstName, setFirstName] = React.useState("")
-
-	const [lastName, setLastName] = React.useState("")
+	const [code, setCode] = React.useState("")
 
 	const [password, setPassword] = React.useState("")
 
 	const [confirmPassword, setConfirmPassword] = React.useState("")
 
+	const navigate = useNavigate()
+
 	function handleSubmit() {
 		if (
 			!email.trim() ||
-			!firstName.trim() ||
-			!lastName.trim() ||
+			!code.trim() ||
 			!password.trim() ||
 			!confirmPassword.trim()
 		) {
@@ -63,11 +45,10 @@ export default function Register() {
 
 		let formData = new FormData()
 		formData.append("email", email)
-		formData.append("first_name", firstName)
-		formData.append("last_name", lastName)
+		formData.append("code", code)
 		formData.append("password", password)
 		formData.append("password_confirm", confirmPassword)
-		register(formData)
+		forgot_password_complete(formData)
 	}
 
 	return (
@@ -79,15 +60,9 @@ export default function Register() {
 				display: "flex",
 				alignItems: "center",
 				justifyContent: "center",
-				backgroundImage:
-					"url('https://1fit.app/static/visual-2df67c4b2230228adad561b651b8068e.png')",
-				backgroundRepeat: "no-repeat",
-				backgroundPosition: "0 50%",
-				backgroundAttachment: "fixed",
-				backgroundSize: "55%",
 			}}
 		>
-			{/* <Box
+			<Box
 				sx={{
 					width: "60%",
 					scale: "0.9",
@@ -100,12 +75,13 @@ export default function Register() {
 					mr: 0,
 					pr: 0,
 				}}
-			></Box> */}
+			></Box>
 
 			<ThemeProvider
 				theme={theme}
 				sx={{
 					ml: 0,
+					width: "40%",
 					display: "flex",
 					alignItems: "center",
 					justifyContent: "center",
@@ -115,14 +91,10 @@ export default function Register() {
 					component="main"
 					maxWidth="xs"
 					sx={{
-						position: "relative",
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "center",
 						mr: 10,
 						my: 4,
 						backgroundColor: "white",
-						height: "680px",
+						height: "570px",
 						borderRadius: "20px",
 					}}
 				>
@@ -131,16 +103,15 @@ export default function Register() {
 						sx={{
 							pt: 4,
 							display: "flex",
-							justifyContent: "center",
 							flexDirection: "column",
 							alignItems: "center",
 						}}
 					>
 						<Avatar sx={{ m: 1, backgroundColor: "#3446f6" }}>
-							<LockOutlinedIcon sx={{}} />
+							<PasswordIcon sx={{}} />
 						</Avatar>
 						<Typography component="h1" variant="h5">
-							Sign up
+							Введите новый пароль
 						</Typography>
 						<Box
 							component="form"
@@ -160,29 +131,18 @@ export default function Register() {
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
 							/>
+
 							<TextField
 								margin="normal"
 								required
 								fullWidth
-								id="first_name"
-								label="First Name"
-								name="first_name"
-								autoComplete="first_name"
+								id="code"
+								label="Secret Code"
+								name="code"
+								autoComplete="code"
 								autoFocus
-								value={firstName}
-								onChange={(e) => setFirstName(e.target.value)}
-							/>
-							<TextField
-								margin="normal"
-								required
-								fullWidth
-								id="last_name"
-								label="Last Name"
-								name="last_name"
-								autoComplete="last_name"
-								autoFocus
-								value={lastName}
-								onChange={(e) => setLastName(e.target.value)}
+								value={code}
+								onChange={(e) => setCode(e.target.value)}
 							/>
 							<TextField
 								margin="normal"
@@ -216,7 +176,7 @@ export default function Register() {
 								variant="contained"
 								sx={{ backgroundColor: "#3446f6", mt: 3, mb: 2 }}
 							>
-								Register
+								Сохранить
 							</Button>
 							<Grid container>
 								<Grid item>
@@ -226,7 +186,7 @@ export default function Register() {
 												color: "#3446f6",
 											}}
 										>
-											{"У вас уже есть учетная запись?"}
+											{"Вернуться ко входу в систему"}
 										</Typography>
 									</RouterLink>
 								</Grid>

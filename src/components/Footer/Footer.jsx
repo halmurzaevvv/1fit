@@ -1,10 +1,15 @@
-import { Box, Typography } from "@mui/material"
+import { Badge, Box, Button, Typography } from "@mui/material"
 import { Container } from "@mui/system"
 import React from "react"
 import InstagramIcon from "@mui/icons-material/Instagram"
 import TelegramIcon from "@mui/icons-material/Telegram"
+import ReviewsIcon from "@mui/icons-material/Reviews"
+import { useNavigate } from "react-router-dom"
+import BookmarkIcon from "@mui/icons-material/Bookmark"
 
 const Footer = () => {
+	const navigate = useNavigate()
+
 	return (
 		<Box
 			sx={{
@@ -88,7 +93,37 @@ const Footer = () => {
 									// width: "400px",
 								}}
 							/>
+							<Button
+								sx={{ my: -1, color: "#fff" }}
+								onClick={() => navigate("/favorite")}
+							>
+								<Badge>
+									<BookmarkIcon
+										sx={{
+											color: "#000",
+											scale: "3",
+											ml: 4,
+											// width: "400px",
+										}}
+									/>
+								</Badge>
+							</Button>
 						</a>
+						<Button
+							onClick={() => navigate("/reviews")}
+							sx={{
+								width: "100px",
+								textAlign: "center",
+							}}
+						>
+							<ReviewsIcon
+								sx={{
+									color: "#000",
+									scale: "3",
+									// width: "400px",
+								}}
+							/>
+						</Button>
 					</Box>
 					<Typography
 						sx={{
@@ -113,6 +148,7 @@ const Footer = () => {
 						onetwothree@gmail.com
 					</Typography>
 					<Typography
+						id="contacts"
 						sx={{
 							textAlign: "center",
 							mt: 3,

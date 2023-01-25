@@ -23,6 +23,15 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"]
 const Navbar = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null)
 	const [anchorElUser, setAnchorElUser] = React.useState(null)
+	const { setUser } = React.useContext(authContext)
+
+	useEffect(() => {
+		let user = localStorage.getItem("username")
+
+		if (user) {
+			setUser(user)
+		}
+	}, [])
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget)
@@ -53,7 +62,6 @@ const Navbar = () => {
 		>
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
-					<AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
 					<div>
 						<Box>
 							<Typography
@@ -70,11 +78,11 @@ const Navbar = () => {
 									fontFamily: "monospace",
 									fontWeight: 700,
 									letterSpacing: ".3rem",
-									color: "inherit",
+									color: "#3446f6",
 									textDecoration: "none",
 								}}
 							>
-								LOGO
+								Fit
 							</Typography>
 						</Box>
 					</div>
@@ -166,16 +174,20 @@ const Navbar = () => {
 										Цены
 									</Button>
 									<Button
+										href="#companies"
 										onClick={() => navigate("/companies")}
-										sx={{ my: 2, color: "black", display: "block" }}
+										sx={{ my: 2, pt: 1, color: "black", display: "block" }}
 									>
 										Компаниям
 									</Button>
 									<Button
-										onClick={() => navigate("/partners")}
-										sx={{ my: 2, color: "black", display: "block" }}
+										href="#contacts"
+										onClick={() => {
+											navigate("/?q=#contacts")
+										}}
+										sx={{ my: 2, pt: 1, color: "black", display: "block" }}
 									>
-										Партнерам
+										Контакты
 									</Button>
 								</Box>
 								<Box
@@ -185,12 +197,12 @@ const Navbar = () => {
 										justifyContent: "right",
 									}}
 								>
-									<Button
+									{/* <Button
 										onClick={() => navigate("/admin")}
 										sx={{ my: 2, color: "black", display: "block" }}
 									>
 										Admin Page
-									</Button>
+									</Button> */}
 									<Typography sx={{ my: 3, color: "black", display: "block" }}>
 										{user}
 									</Typography>
@@ -224,36 +236,6 @@ const Navbar = () => {
 							</>
 						)}
 					</Box>
-					{/* function goToContacts() {navigate("/?q=#contacts")} */}
-					{/* <Box sx={{ flexGrow: 0 }}>
-						<Tooltip title="Open settings">
-							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-								<Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-							</IconButton>
-						</Tooltip>
-						<Menu
-							sx={{ mt: "45px" }}
-							id="menu-appbar"
-							anchorEl={anchorElUser}
-							anchorOrigin={{
-								vertical: "top",
-								horizontal: "right",
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: "top",
-								horizontal: "right",
-							}}
-							open={Boolean(anchorElUser)}
-							onClose={handleCloseUserMenu}
-						>
-							{settings.map((setting) => (
-								<MenuItem key={setting} onClick={handleCloseUserMenu}>
-									<Typography textAlign="center">{setting}</Typography>
-								</MenuItem>
-							))}
-						</Menu>
-					</Box> */}
 				</Toolbar>
 			</Container>
 		</AppBar>
