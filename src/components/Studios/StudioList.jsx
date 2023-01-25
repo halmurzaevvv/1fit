@@ -66,11 +66,11 @@ const StudioList = () => {
 
 	const [currentPage, setCurrentPage] = useState(1)
 
-	const pages = Math.ceil(products.length / 5)
+	const pages = Math.ceil(products.length / 6)
 
 	function currentData() {
-		let begin = (currentPage - 1) * 5
-		let end = begin + 5
+		let begin = (currentPage - 1) * 6
+		let end = begin + 6
 		return products.slice(begin, end)
 	}
 
