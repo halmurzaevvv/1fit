@@ -62,7 +62,6 @@ const Navbar = () => {
 		>
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
-					<AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
 					<div>
 						<Box>
 							<Typography
@@ -79,11 +78,11 @@ const Navbar = () => {
 									fontFamily: "monospace",
 									fontWeight: 700,
 									letterSpacing: ".3rem",
-									color: "inherit",
+									color: "#3446f6",
 									textDecoration: "none",
 								}}
 							>
-								LOGO
+								Fit
 							</Typography>
 						</Box>
 					</div>
