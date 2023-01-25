@@ -6,14 +6,18 @@ import CardMedia from "@mui/material/CardMedia"
 import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
 import { productContext } from "../Contexts/OutContext"
-import { Box, Grid, Paper, Item, styled, CardActionArea } from "@mui/material"
-import { useNavigate } from "react-router-dom"
+import { CardActionArea } from "@mui/material"
 import ThumbUpIcon from "@mui/icons-material/ThumbUp"
 import { authContext } from "../Contexts/AuthContext"
+import { Box, Grid, Paper, Item, styled, IconButton } from "@mui/material"
+import { useNavigate } from "react-router-dom"
+import { cartContext } from "../Contexts/CartContext"
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder"
 
 const StudioCard = ({ item }) => {
 	const { deleteProduct, saveEditStudio, toggleLike } =
 		useContext(productContext)
+	const { addStudioToFav, checkProductInFavorite } = useContext(cartContext)
 
 	const { user } = React.useContext(authContext)
 
@@ -58,7 +62,7 @@ const StudioCard = ({ item }) => {
 							}}
 							component="img"
 							image={
-								"https://www.howtogeek.com/wp-content/uploads/2018/07/error-403-forbidden-message-on-a-website.jpeg?height=200p&trim=2,2,2,2"
+								"https://onefit-static.s3.amazonaws.com/media/fitness/None/amium3zuiqtrqf1cehazqvp69.jpg"
 							}
 						/>
 						<CardContent>
@@ -118,6 +122,18 @@ const StudioCard = ({ item }) => {
 									</Button>
 
 									<Typography variant="h6">{item.likes}</Typography>
+									<CardActions className="cart-action2">
+										<IconButton
+											variant="outlined"
+											size="small"
+											onClick={() => addStudioToFav(item)}
+										>
+											<BookmarkBorderIcon
+												className="card-btn"
+												color={checkProductInFavorite(item.id) ? "primary" : ""}
+											/>
+										</IconButton>
+									</CardActions>
 								</Box>
 							</Box>
 
@@ -143,3 +159,65 @@ const StudioCard = ({ item }) => {
 }
 
 export default StudioCard
+
+// gutterBottom
+// variant="h5"
+// component="div"
+// >
+// {item.title}
+// </Typography>
+// </CardContent>
+// <CardActions sx={{}}>
+// <Typography variant="h6">⭐4.9</Typography>
+// <Typography
+// sx={{
+// 	height: "20px",
+// 	fontSize: "10px",
+// 	// fontSize: "18px",
+// 	// whiteSpace: "nowrap" /* Запрещаем перенос строк */,
+// 	// overflow:
+// 	// 	"hidden" /* Обрезаем все, что не помещается в область */,
+// 	// padding: "5px" /* Поля вокруг текста */,
+// 	// textOverflow: "ellipsis" /* Добавляем многоточие */,
+// }}
+// variant="h6"
+// color="text.secondary"
+// >
+// {item.address}
+// </Typography>
+// <Typography
+// sx={{
+// 	height: "100px",
+// 	fontSize: "10px",
+// 	// whiteSpace: "nowrap" /* Запрещаем перенос строк */,
+// 	overflow:
+// 		"hidden" /* Обрезаем все, что не помещается в область */,
+// 	padding: "5px" /* Поля вокруг текста */,
+// 	textOverflow: "ellipsis" /* Добавляем многоточие */,
+// }}
+// variant="h6"
+// >
+// {item.description}
+// </Typography>
+// <Box>
+// <Button size="small" onClick={() => deleteProduct(item.id)}>
+// 	Delete
+// </Button>
+// <Button size="small" onClick={() => navigate(`/edit/${item.id}`)}>
+// 	Edit
+// </Button>
+// <CardActions className="cart-action2">
+// 	<IconButton
+// 	variant="outlined"
+// 	size="small"
+// 	onClick={() => addStudioToFav(item)}
+// 	>
+// 		<BookmarkBorderIcon
+// 		className="card-btn"
+// 		color={checkProductInFavorite(item.id) ? "primary" : ""} />
+// 	</IconButton>
+// </CardActions>
+// </Box>
+// </CardActions>
+// </Box>
+// >>>>>>> 70223aa67a16540d66a96095ae40c66a075fd28d

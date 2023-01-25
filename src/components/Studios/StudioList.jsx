@@ -36,11 +36,14 @@ const MenuProps = {
 }
 
 const names = [
-	"Oliver Hansen",
-	"Van Henry",
-	"April Tucker",
-	"Ralph Hubbard",
-	"Omar Alexander",
+	"Dance",
+	"Gym",
+	"IntenseWorkout",
+	"MatrialArts",
+	"RecoveryProcedures",
+	"StrachingAndPilates",
+	"SwimmingPool",
+	"Yoga",
 ]
 
 function getStyles(name, personName, theme) {

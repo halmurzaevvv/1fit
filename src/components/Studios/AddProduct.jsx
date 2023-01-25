@@ -16,8 +16,7 @@ import { productContext } from "../Contexts/OutContext"
 
 const AddProduct = () => {
 	const { user } = useContext(authContext)
-	const { addProducts, error, getCategories, categories } =
-		useContext(productContext)
+	const { addProducts, error, getCategories } = useContext(productContext)
 
 	useEffect(() => {
 		getCategories()
@@ -47,7 +46,6 @@ const AddProduct = () => {
 			})
 		}
 	}
-
 	function handleSave() {
 		let newProduct = new FormData()
 		newProduct.append("trainer", product.trainer)
@@ -144,7 +142,6 @@ const AddProduct = () => {
 						value={product.address}
 						onChange={handleInp}
 					/>
-
 					<TextField
 						sx={{ m: 1 }}
 						id="standard-basic"
@@ -172,13 +169,12 @@ const AddProduct = () => {
 							))}
 						</Select>
 					</FormControl> */}
-
+					=======
 					<input
 						type="file"
 						// hidden
 						name="image"
 					/>
-
 					<Button
 						sx={{
 							m: 1,
