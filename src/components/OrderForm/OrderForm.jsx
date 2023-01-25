@@ -30,6 +30,11 @@ const CreditCard = () => {
 		AOS.init()
 	}, [])
 
+	const cartCleaner = () => {
+		localStorage.removeItem("cart")
+		alert("Order successfully paid")
+	}
+
 	return (
 		<Box
 			data-aos="fade-up"
@@ -189,6 +194,7 @@ const CreditCard = () => {
 					</div>
 					<br />
 					<input
+						onClick={() => cartCleaner()}
 						type="submit"
 						className="btn btn-light form-control"
 						value="Submit"
