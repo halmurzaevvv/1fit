@@ -211,6 +211,7 @@ const Description = () => {
 							fontSize: "30px",
 							height: "50px",
 							fontWeight: "700",
+							mb: 4,
 						}}
 						variant="h4"
 						component="div"

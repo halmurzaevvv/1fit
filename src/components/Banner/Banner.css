@@ -11,6 +11,7 @@
 	width: 100%;
 	display: flex;
 	justify-content: space-evenly;
+	/* flex-wrap:wrap */
 	/* align-items: center; */
 }
 
@@ -28,13 +29,16 @@
 .banner__left_title {
 	margin-top: 0;
 	padding-top: 0;
-	font-size: 64px;
+	margin-bottom: 20px;
+	font-size: 50px;
+	font-weight: 700;
 }
 
 .banner__left_bottom {
 }
 
-.banner__price_btn {
+.banner__price_btn:hover {
+	background-color: rgb(181, 181, 181) !important;
 }
 
 .banner__price {
@@ -50,4 +54,14 @@
 
 .banner_img {
 	width: 80%;
+}
+
+@media only screen and (max-width: 600px) {
+	.banner__left_title {
+		margin-top: 0;
+		padding-top: 0;
+		margin-bottom: 20px;
+		font-size: 40px;
+		font-weight: 700;
+	}
 }

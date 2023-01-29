@@ -20,7 +20,7 @@ const HomeCategories = () => {
 	const navigate = useNavigate()
 
 	return (
-		<div
+		<Box
 			data-aos="fade-up"
 			data-aos-duration="800"
 			sx={{
@@ -29,6 +29,7 @@ const HomeCategories = () => {
 				display: "flex",
 				alignItems: "center",
 				justifyContent: "space-around",
+				flexDirection: "column",
 			}}
 		>
 			<Box
@@ -39,12 +40,13 @@ const HomeCategories = () => {
 					justifyContent: "center",
 					marginTop: "100px",
 					marginBottom: "30px",
-					// flexDirection: "column",
+					// flexWrap: "wrap",
+					flexDirection: "column",
 				}}
 			>
 				<Typography
 					sx={{
-						width: "85%",
+						// width: "80%",
 						fontWeight: "700",
 					}}
 					variant="h4"
@@ -55,7 +57,8 @@ const HomeCategories = () => {
 				<Typography
 					onClick={() => navigate("/studios")}
 					sx={{
-						width: "15%",
+						// width: "100%",
+						// textAlign: "right",
 						fontWeight: "700",
 						color: "#3446F6",
 					}}
@@ -65,6 +68,7 @@ const HomeCategories = () => {
 					<Button
 						sx={{
 							fontWeight: "700",
+							width: "100%",
 						}}
 					>
 						Смотреть залы{" "}
@@ -81,7 +85,6 @@ const HomeCategories = () => {
 			</Box>
 			<Box
 				sx={{
-					width: "100%",
 					mt: 0,
 					pt: 0,
 				}}
@@ -89,6 +92,7 @@ const HomeCategories = () => {
 				<ImageList
 					sx={{
 						height: "550px",
+						width: "100%",
 					}}
 					cols={4}
 					gap={12}
@@ -96,6 +100,8 @@ const HomeCategories = () => {
 					{itemData.map((item) => (
 						<ImageListItem
 							sx={{
+								width: "100%",
+
 								borderRadius: "20px",
 							}}
 							key={item.img}
@@ -113,20 +119,12 @@ const HomeCategories = () => {
 									fontWeight: "700",
 								}}
 								title={item.title}
-								// actionIcon={
-								// 	<IconButton
-								// 		sx={{ color: "rgba(255, 255, 255, 0.54)" }}
-								// 		aria-label={`info about ${item.title}`}
-								// 	>
-								// 		<InfoIcon />
-								// 	</IconButton>
-								// }
 							/>
 						</ImageListItem>
 					))}
 				</ImageList>
 			</Box>
-		</div>
+		</Box>
 	)
 }
 

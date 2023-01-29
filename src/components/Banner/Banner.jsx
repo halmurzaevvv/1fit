@@ -3,8 +3,10 @@ import React, { useEffect } from "react"
 import "./Banner.css"
 import AOS from "aos"
 import "aos/dist/aos.css"
+import { useNavigate } from "react-router-dom"
 
 const Banner = () => {
+	const navigate = useNavigate()
 	useEffect(() => {
 		AOS.init()
 	}, [])
@@ -27,13 +29,13 @@ const Banner = () => {
 						>
 							0 · 0 · 12
 						</h4>
-						<h1
+						<div
 							className="banner__left_title"
 							data-aos="fade-up"
 							data-aos-duration="800"
 						>
 							Ваш абонемент на все виды спорта
-						</h1>
+						</div>
 						<div className="banner__left_bottom">
 							<Button
 								sx={{
@@ -47,6 +49,8 @@ const Banner = () => {
 								}}
 								className="banner__price_btn"
 								variant="contained"
+								href="#prices"
+								onClick={() => navigate("/?q=#prices")}
 							>
 								Посмотреть цены
 							</Button>

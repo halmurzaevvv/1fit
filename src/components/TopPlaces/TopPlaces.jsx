@@ -25,11 +25,12 @@ const TopPlaces = () => {
 					marginTop: "100px",
 					marginBottom: "30px",
 					pt: 2,
+					flexDirection: "column",
 				}}
 			>
 				<Typography
 					sx={{
-						width: "85%",
+						// width: "85%",
 						fontWeight: "700",
 					}}
 					variant="h4"
@@ -40,7 +41,7 @@ const TopPlaces = () => {
 				<Typography
 					onClick={() => navigate("/studios")}
 					sx={{
-						width: "15%",
+						// width: "15%",
 						fontWeight: "700",
 						color: "#3446F6",
 					}}
