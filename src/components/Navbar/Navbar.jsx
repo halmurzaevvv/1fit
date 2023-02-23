@@ -145,7 +145,7 @@ const Navbar = () => {
 							display: { xs: "none", md: "flex" },
 						}}
 					>
-						{user ? (
+					{/*	{user ? (*/}
 							<Box
 								sx={{
 									width: "100%",
@@ -219,7 +219,7 @@ const Navbar = () => {
 									</Button>
 								</Box>
 							</Box>
-						) : (
+						{/*) : (
 							<>
 								<Button
 									onClick={() => navigate("/login")}
@@ -234,7 +234,7 @@ const Navbar = () => {
 									Register
 								</Button>
 							</>
-						)}
+						)}*/}
 					</Box>
 				</Toolbar>
 			</Container>
